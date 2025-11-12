@@ -177,7 +177,7 @@ export function MyMemberships() {
             <p className="text-gray-600 mb-4">You don't have any memberships yet</p>
             <a
               href="/marketplace"
-              className="inline-block px-6 py-3 bg-black hover:bg-gray-800 text-white rounded-lg font-semibold transition-colors"
+              className="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors"
             >
               Browse Marketplace
             </a>
@@ -224,7 +224,7 @@ export function MyMemberships() {
                   <div className="flex gap-2">
                     {!expired && (
                       <>
-                        <button className="flex-1 px-4 py-2 bg-black hover:bg-gray-800 text-white rounded-lg font-medium transition-colors text-sm">
+                        <button className="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors text-sm">
                           Access Content
                         </button>
                         <button
@@ -291,7 +291,7 @@ export function MyMemberships() {
               <div className="flex gap-3">
                 <button
                   onClick={confirmListing}
-                  className="flex-1 px-6 py-3 bg-black hover:bg-gray-800 text-white rounded-lg font-semibold transition-colors"
+                  className="flex-1 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors"
                 >
                   List for Sale
                 </button>

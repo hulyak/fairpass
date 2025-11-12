@@ -140,7 +140,7 @@ export function CreatorDashboard() {
           </p>
           <button
             onClick={() => setShowProfileForm(true)}
-            className="w-full px-6 py-4 bg-black hover:bg-gray-800 text-white rounded-xl font-semibold text-lg transition-all hover:scale-105 shadow-md"
+            className="w-full px-6 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold text-lg transition-all hover:scale-105 shadow-sm"
           >
             Create Your Profile
           </button>
@@ -218,7 +218,7 @@ export function CreatorDashboard() {
             <h2 className="text-2xl font-bold">Membership Tiers</h2>
             <button
               onClick={() => setShowTierForm(!showTierForm)}
-              className="px-5 py-2.5 bg-black hover:bg-gray-800 text-white rounded-lg font-medium transition-all flex items-center gap-2 shadow-md hover:scale-105"
+              className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-all flex items-center gap-2 shadow-sm hover:scale-105"
             >
               <Plus className="w-4 h-4" />
               Create Tier
@@ -372,7 +372,7 @@ function TierForm({ creatorId, onSuccess, onCancel }: { creatorId: string; onSuc
       <div className="flex gap-3">
         <button
           type="submit"
-          className="px-6 py-2 bg-black hover:bg-gray-800 text-white rounded-lg font-medium transition-colors"
+          className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors"
         >
           Create Tier
         </button>
@@ -469,7 +469,7 @@ function ProfileFormModal({ onSubmit, onCancel }: { onSubmit: (name: string, bio
             <button
               type="submit"
               disabled={submitting || !formData.name}
-              className="flex-1 px-6 py-3 bg-black hover:bg-gray-800 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed rounded-lg font-medium transition-all shadow-md hover:shadow-md disabled:shadow-none"
+              className="flex-1 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed rounded-lg font-semibold transition-all shadow-sm disabled:shadow-none"
             >
               {submitting ? 'Creating...' : 'Create Profile'}
             </button>

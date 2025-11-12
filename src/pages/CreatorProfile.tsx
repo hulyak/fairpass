@@ -94,7 +94,7 @@ export function CreatorProfile({ creatorId, onBack }: { creatorId: string; onBac
         <div className="text-center">
           <User className="w-16 h-16 text-gray-500 mx-auto mb-4" />
           <p className="text-gray-600 mb-4">Creator not found</p>
-          <button onClick={onBack} className="px-6 py-2 bg-black hover:bg-gray-800 text-white rounded-lg font-medium transition-colors">
+          <button onClick={onBack} className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors">
             Go Back
           </button>
         </div>
@@ -193,7 +193,7 @@ export function CreatorProfile({ creatorId, onBack }: { creatorId: string; onBac
                   </div>
                 </div>
 
-                <button className="w-full px-6 py-3 bg-black hover:bg-gray-800 text-white rounded-lg font-semibold transition-colors">
+                <button className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors">
                   Purchase
                 </button>
               </div>

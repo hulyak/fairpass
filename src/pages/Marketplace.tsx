@@ -283,7 +283,7 @@ export function Marketplace() {
                   <button
                     onClick={() => handlePurchase(tier)}
                     disabled={!selectedAccount}
-                    className="w-full px-6 py-3 bg-black hover:bg-gray-800 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed rounded-lg font-semibold transition-all shadow-md hover:shadow-md disabled:shadow-none group-hover:scale-105"
+                    className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed rounded-lg font-semibold transition-all shadow-sm hover:shadow-md disabled:shadow-none"
                   >
                     {selectedAccount ? 'Purchase Membership' : 'Connect Wallet'}
                   </button>
@@ -356,7 +356,7 @@ function ConfirmPurchaseModal({ tier, onConfirm, onCancel, purchasing }: { tier:
             <button
               onClick={onConfirm}
               disabled={purchasing}
-              className="flex-1 px-6 py-3 bg-black hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg font-medium transition-all shadow-md"
+              className="flex-1 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white disabled:opacity-50 disabled:cursor-not-allowed rounded-lg font-semibold transition-all shadow-sm"
             >
               {purchasing ? 'Processing...' : 'Confirm Purchase'}
             </button>
@@ -395,7 +395,7 @@ function SuccessModal({ tokenId, expiresAt, tierName, onClose }: { tokenId: stri
 
           <button
             onClick={onClose}
-            className="w-full px-6 py-3 bg-black hover:bg-gray-800 text-white rounded-lg font-medium transition-all shadow-md"
+            className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-all shadow-sm"
           >
             Done
           </button>

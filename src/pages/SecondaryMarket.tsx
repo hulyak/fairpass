@@ -238,7 +238,7 @@ export function SecondaryMarket() {
                 <button
                   onClick={() => handlePurchase(listing)}
                   disabled={!selectedAccount || selectedAccount.address === listing.seller_wallet}
-                  className="w-full px-6 py-3 bg-black hover:bg-gray-800 disabled:bg-gray-600 disabled:cursor-not-allowed rounded-lg font-semibold transition-colors"
+                  className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed rounded-lg font-semibold transition-colors"
                 >
                   {!selectedAccount
                     ? 'Connect Wallet'
