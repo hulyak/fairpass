@@ -131,7 +131,7 @@ export function CreatorDashboard() {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="max-w-md text-center p-8">
-          <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-md">
+          <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-md">
             <Award className="w-10 h-10 text-white" />
           </div>
           <h2 className="text-3xl font-bold mb-3">Become a Creator</h2>
@@ -140,7 +140,7 @@ export function CreatorDashboard() {
           </p>
           <button
             onClick={() => setShowProfileForm(true)}
-            className="w-full px-6 py-4 bg-black hover:bg-gray-800 rounded-xl font-semibold text-lg transition-all hover:scale-105 shadow-lg shadow-xl"
+            className="w-full px-6 py-4 bg-black hover:bg-gray-800 text-white rounded-xl font-semibold text-lg transition-all hover:scale-105 shadow-md"
           >
             Create Your Profile
           </button>
@@ -184,7 +184,7 @@ export function CreatorDashboard() {
         <div className="grid md:grid-cols-3 gap-6 mb-8">
           <div className="p-6 bg-white rounded-xl border border-gray-200 hover:border-black transition-all group">
             <div className="flex items-center justify-between mb-2">
-              <div className="w-12 h-12 bg-black/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+              <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                 <Users className="w-6 h-6 text-black" />
               </div>
               <span className="text-3xl font-bold">{stats.totalMembers}</span>
@@ -194,7 +194,7 @@ export function CreatorDashboard() {
 
           <div className="p-6 bg-white rounded-xl border border-gray-200 hover:border-black transition-all group">
             <div className="flex items-center justify-between mb-2">
-              <div className="w-12 h-12 bg-black/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+              <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                 <DollarSign className="w-6 h-6 text-black" />
               </div>
               <span className="text-3xl font-bold">{stats.revenue.toFixed(2)}</span>
@@ -204,7 +204,7 @@ export function CreatorDashboard() {
 
           <div className="p-6 bg-white rounded-xl border border-gray-200 hover:border-black transition-all group">
             <div className="flex items-center justify-between mb-2">
-              <div className="w-12 h-12 bg-black/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+              <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                 <TrendingUp className="w-6 h-6 text-black" />
               </div>
               <span className="text-3xl font-bold">{stats.activeTiers}</span>
@@ -218,7 +218,7 @@ export function CreatorDashboard() {
             <h2 className="text-2xl font-bold">Membership Tiers</h2>
             <button
               onClick={() => setShowTierForm(!showTierForm)}
-              className="px-5 py-2.5 bg-black hover:bg-gray-800 rounded-lg font-medium transition-all flex items-center gap-2 shadow-lg shadow-xl hover:scale-105"
+              className="px-5 py-2.5 bg-black hover:bg-gray-800 text-white rounded-lg font-medium transition-all flex items-center gap-2 shadow-md hover:scale-105"
             >
               <Plus className="w-4 h-4" />
               Create Tier
@@ -372,7 +372,7 @@ function TierForm({ creatorId, onSuccess, onCancel }: { creatorId: string; onSuc
       <div className="flex gap-3">
         <button
           type="submit"
-          className="px-6 py-2 bg-black hover:bg-gray-800 rounded-lg font-medium transition-colors"
+          className="px-6 py-2 bg-black hover:bg-gray-800 text-white rounded-lg font-medium transition-colors"
         >
           Create Tier
         </button>
@@ -469,7 +469,7 @@ function ProfileFormModal({ onSubmit, onCancel }: { onSubmit: (name: string, bio
             <button
               type="submit"
               disabled={submitting || !formData.name}
-              className="flex-1 px-6 py-3 bg-black hover:bg-gray-800 disabled:bg-gray-400 disabled:cursor-not-allowed rounded-lg font-medium transition-all shadow-lg shadow-xl hover:shadow-md disabled:shadow-none"
+              className="flex-1 px-6 py-3 bg-black hover:bg-gray-800 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed rounded-lg font-medium transition-all shadow-md hover:shadow-md disabled:shadow-none"
             >
               {submitting ? 'Creating...' : 'Create Profile'}
             </button>

@@ -251,7 +251,7 @@ export function Marketplace() {
                       <h3 className="text-xl font-bold mb-1">{tier.name}</h3>
                       <p className="text-xs text-gray-600">by {tier.creator.name}</p>
                     </div>
-                    <div className="w-10 h-10 bg-black/10 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
                       <Award className="w-5 h-5 text-black" />
                     </div>
                   </div>
@@ -283,7 +283,7 @@ export function Marketplace() {
                   <button
                     onClick={() => handlePurchase(tier)}
                     disabled={!selectedAccount}
-                    className="w-full px-6 py-3 bg-black hover:bg-gray-800 disabled:bg-gray-400 disabled:cursor-not-allowed rounded-lg font-semibold transition-all shadow-lg shadow-xl hover:shadow-md disabled:shadow-none group-hover:scale-105"
+                    className="w-full px-6 py-3 bg-black hover:bg-gray-800 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed rounded-lg font-semibold transition-all shadow-md hover:shadow-md disabled:shadow-none group-hover:scale-105"
                   >
                     {selectedAccount ? 'Purchase Membership' : 'Connect Wallet'}
                   </button>
@@ -356,7 +356,7 @@ function ConfirmPurchaseModal({ tier, onConfirm, onCancel, purchasing }: { tier:
             <button
               onClick={onConfirm}
               disabled={purchasing}
-              className="flex-1 px-6 py-3 bg-black hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg font-medium transition-all shadow-lg shadow-xl"
+              className="flex-1 px-6 py-3 bg-black hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg font-medium transition-all shadow-md"
             >
               {purchasing ? 'Processing...' : 'Confirm Purchase'}
             </button>
@@ -372,7 +372,7 @@ function SuccessModal({ tokenId, expiresAt, tierName, onClose }: { tokenId: stri
     <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-2xl border border-black max-w-md w-full shadow-2xl shadow-xl">
         <div className="p-6 text-center">
-          <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-md">
+          <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
             <CheckCircle2 className="w-8 h-8 text-white" />
           </div>
           <h2 className="text-2xl font-bold mb-2">Purchase Successful!</h2>
@@ -395,7 +395,7 @@ function SuccessModal({ tokenId, expiresAt, tierName, onClose }: { tokenId: stri
 
           <button
             onClick={onClose}
-            className="w-full px-6 py-3 bg-black hover:bg-gray-800 rounded-lg font-medium transition-all shadow-lg shadow-xl"
+            className="w-full px-6 py-3 bg-black hover:bg-gray-800 text-white rounded-lg font-medium transition-all shadow-md"
           >
             Done
           </button>
