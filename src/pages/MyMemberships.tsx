@@ -160,7 +160,7 @@ export function MyMemberships() {
           </div>
           <button
             onClick={loadMemberships}
-            className="px-4 py-2 bg-white hover:bg-slate-700 rounded-lg font-medium transition-colors flex items-center gap-2"
+            className="px-4 py-2 bg-white hover:bg-gray-700 rounded-lg font-medium transition-colors flex items-center gap-2"
           >
             <RefreshCw className="w-4 h-4" />
             Refresh
@@ -189,7 +189,7 @@ export function MyMemberships() {
               return (
                 <div
                   key={membership.id}
-                  className={`p-6 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl border transition-all ${
+                  className={`p-6 bg-white rounded-xl border transition-all ${
                     expired ? 'border-gray-200 opacity-60' : 'border-emerald-500/30'
                   }`}
                 >
@@ -229,7 +229,7 @@ export function MyMemberships() {
                         </button>
                         <button
                           onClick={() => handleListForSale(membership)}
-                          className="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg font-medium transition-colors text-sm"
+                          className="px-4 py-2 bg-gray-600 hover:bg-gray-500 rounded-lg font-medium transition-colors text-sm"
                           title="List for sale"
                         >
                           <Tag className="w-4 h-4" />
@@ -239,7 +239,7 @@ export function MyMemberships() {
                     {expired && (
                       <button
                         onClick={() => handleRenew(membership)}
-                        className="flex-1 px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg font-medium transition-colors text-sm"
+                        className="flex-1 px-4 py-2 bg-gray-600 hover:bg-gray-500 rounded-lg font-medium transition-colors text-sm"
                       >
                         Renew
                       </button>
@@ -253,7 +253,7 @@ export function MyMemberships() {
 
         {showListingModal && selectedMembership && (
           <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-6">
-            <div className="bg-slate-900 border border-gray-200 rounded-2xl p-8 max-w-md w-full">
+            <div className="bg-white border border-gray-200 rounded-2xl p-8 max-w-md w-full">
               <h2 className="text-2xl font-bold mb-4">List Membership for Sale</h2>
 
               <div className="p-4 bg-white rounded-lg mb-6">
@@ -301,7 +301,7 @@ export function MyMemberships() {
                     setSelectedMembership(null);
                     setListingPrice('');
                   }}
-                  className="px-6 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg font-semibold transition-colors"
+                  className="px-6 py-3 bg-gray-600 hover:bg-gray-500 rounded-lg font-semibold transition-colors"
                 >
                   Cancel
                 </button>

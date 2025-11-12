@@ -146,7 +146,7 @@ export function SecondaryMarket() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 mb-8">
-          <div className="p-6 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl border border-gray-200">
+          <div className="p-6 bg-white rounded-xl border border-gray-200">
             <div className="flex items-center justify-between mb-2">
               <Tag className="w-6 h-6 text-black" />
               <span className="text-2xl font-bold">{listings.length}</span>
@@ -154,7 +154,7 @@ export function SecondaryMarket() {
             <div className="text-gray-600">Active Listings</div>
           </div>
 
-          <div className="p-6 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl border border-gray-200">
+          <div className="p-6 bg-white rounded-xl border border-gray-200">
             <div className="flex items-center justify-between mb-2">
               <TrendingUp className="w-6 h-6 text-black" />
               <span className="text-2xl font-bold">
@@ -166,7 +166,7 @@ export function SecondaryMarket() {
             <div className="text-gray-600">Avg Price (DOT)</div>
           </div>
 
-          <div className="p-6 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl border border-gray-200">
+          <div className="p-6 bg-white rounded-xl border border-gray-200">
             <div className="flex items-center justify-between mb-2">
               <ShoppingCart className="w-6 h-6 text-black" />
               <span className="text-2xl font-bold">
@@ -191,7 +191,7 @@ export function SecondaryMarket() {
             {listings.map((listing) => (
               <div
                 key={listing.id}
-                className="p-6 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl border border-gray-200 hover:border-emerald-500/50 transition-all"
+                className="p-6 bg-white rounded-xl border border-gray-200 hover:border-black transition-all"
               >
                 <div className="flex items-start justify-between mb-4">
                   <div>
@@ -238,7 +238,7 @@ export function SecondaryMarket() {
                 <button
                   onClick={() => handlePurchase(listing)}
                   disabled={!selectedAccount || selectedAccount.address === listing.seller_wallet}
-                  className="w-full px-6 py-3 bg-black hover:bg-gray-800 disabled:bg-slate-700 disabled:cursor-not-allowed rounded-lg font-semibold transition-colors"
+                  className="w-full px-6 py-3 bg-black hover:bg-gray-800 disabled:bg-gray-600 disabled:cursor-not-allowed rounded-lg font-semibold transition-colors"
                 >
                   {!selectedAccount
                     ? 'Connect Wallet'

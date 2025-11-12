@@ -131,7 +131,7 @@ export function CreatorDashboard() {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="max-w-md text-center p-8">
-          <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-emerald-500/50">
+          <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-md">
             <Award className="w-10 h-10 text-white" />
           </div>
           <h2 className="text-3xl font-bold mb-3">Become a Creator</h2>
@@ -140,7 +140,7 @@ export function CreatorDashboard() {
           </p>
           <button
             onClick={() => setShowProfileForm(true)}
-            className="w-full px-6 py-4 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 rounded-xl font-semibold text-lg transition-all hover:scale-105 shadow-lg shadow-emerald-500/30"
+            className="w-full px-6 py-4 bg-black hover:bg-gray-800 rounded-xl font-semibold text-lg transition-all hover:scale-105 shadow-lg shadow-xl"
           >
             Create Your Profile
           </button>
@@ -168,7 +168,7 @@ export function CreatorDashboard() {
               <img
                 src={creator.avatar_url}
                 alt={creator.name}
-                className="w-16 h-16 rounded-full object-cover border-2 border-emerald-500/50"
+                className="w-16 h-16 rounded-full object-cover border-2 border-black"
               />
             )}
             <div>
@@ -177,12 +177,12 @@ export function CreatorDashboard() {
             </div>
           </div>
           {creator.bio && (
-            <p className="text-slate-300 max-w-2xl">{creator.bio}</p>
+            <p className="text-gray-700 max-w-2xl">{creator.bio}</p>
           )}
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 mb-8">
-          <div className="p-6 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl border border-gray-200 hover:border-emerald-500/50 transition-all group">
+          <div className="p-6 bg-white rounded-xl border border-gray-200 hover:border-black transition-all group">
             <div className="flex items-center justify-between mb-2">
               <div className="w-12 h-12 bg-black/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                 <Users className="w-6 h-6 text-black" />
@@ -192,7 +192,7 @@ export function CreatorDashboard() {
             <div className="text-gray-600 text-sm">Active Members</div>
           </div>
 
-          <div className="p-6 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl border border-gray-200 hover:border-emerald-500/50 transition-all group">
+          <div className="p-6 bg-white rounded-xl border border-gray-200 hover:border-black transition-all group">
             <div className="flex items-center justify-between mb-2">
               <div className="w-12 h-12 bg-black/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                 <DollarSign className="w-6 h-6 text-black" />
@@ -202,7 +202,7 @@ export function CreatorDashboard() {
             <div className="text-gray-600 text-sm">Total Revenue (DOT)</div>
           </div>
 
-          <div className="p-6 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl border border-gray-200 hover:border-emerald-500/50 transition-all group">
+          <div className="p-6 bg-white rounded-xl border border-gray-200 hover:border-black transition-all group">
             <div className="flex items-center justify-between mb-2">
               <div className="w-12 h-12 bg-black/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                 <TrendingUp className="w-6 h-6 text-black" />
@@ -218,7 +218,7 @@ export function CreatorDashboard() {
             <h2 className="text-2xl font-bold">Membership Tiers</h2>
             <button
               onClick={() => setShowTierForm(!showTierForm)}
-              className="px-5 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 rounded-lg font-medium transition-all flex items-center gap-2 shadow-lg shadow-emerald-500/30 hover:scale-105"
+              className="px-5 py-2.5 bg-black hover:bg-gray-800 rounded-lg font-medium transition-all flex items-center gap-2 shadow-lg shadow-xl hover:scale-105"
             >
               <Plus className="w-4 h-4" />
               Create Tier
@@ -240,11 +240,11 @@ export function CreatorDashboard() {
             {tiers.map((tier) => (
               <div
                 key={tier.id}
-                className="p-5 bg-slate-900 rounded-lg border border-gray-200 hover:border-emerald-500/50 transition-all"
+                className="p-5 bg-white rounded-lg border border-gray-200 hover:border-black transition-all"
               >
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="text-xl font-bold">{tier.name}</h3>
-                  <span className={`px-2 py-1 rounded text-xs ${tier.is_active ? 'bg-black/20 text-black' : 'bg-slate-700 text-gray-600'}`}>
+                  <span className={`px-2 py-1 rounded text-xs ${tier.is_active ? 'bg-black/20 text-black' : 'bg-gray-600 text-gray-600'}`}>
                     {tier.is_active ? 'Active' : 'Inactive'}
                   </span>
                 </div>
@@ -306,7 +306,7 @@ function TierForm({ creatorId, onSuccess, onCancel }: { creatorId: string; onSuc
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-6 bg-slate-900 rounded-lg border border-gray-200 mb-6">
+    <form onSubmit={handleSubmit} className="p-6 bg-white rounded-lg border border-gray-200 mb-6">
       <h3 className="text-xl font-bold mb-4">Create New Membership Tier</h3>
       <div className="grid md:grid-cols-2 gap-4 mb-4">
         <div>
@@ -379,7 +379,7 @@ function TierForm({ creatorId, onSuccess, onCancel }: { creatorId: string; onSuc
         <button
           type="button"
           onClick={onCancel}
-          className="px-6 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg font-medium transition-colors"
+          className="px-6 py-2 bg-gray-600 hover:bg-gray-500 rounded-lg font-medium transition-colors"
         >
           Cancel
         </button>
@@ -408,7 +408,7 @@ function ProfileFormModal({ onSubmit, onCancel }: { onSubmit: (name: string, bio
 
   return (
     <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-      <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-gray-200 max-w-lg w-full shadow-2xl shadow-emerald-500/20 animate-in fade-in zoom-in duration-200">
+      <div className="bg-white rounded-2xl border border-gray-200 max-w-lg w-full shadow-2xl shadow-lg animate-in fade-in zoom-in duration-200">
         <div className="p-6 border-b border-gray-200 flex items-center justify-between">
           <div>
             <h2 className="text-2xl font-bold">Create Your Profile</h2>
@@ -416,7 +416,7 @@ function ProfileFormModal({ onSubmit, onCancel }: { onSubmit: (name: string, bio
           </div>
           <button
             onClick={onCancel}
-            className="w-10 h-10 rounded-lg bg-slate-700/50 hover:bg-slate-700 transition-colors flex items-center justify-center"
+            className="w-10 h-10 rounded-lg bg-gray-600/50 hover:bg-gray-700 transition-colors flex items-center justify-center"
           >
             <X className="w-5 h-5" />
           </button>
@@ -430,7 +430,7 @@ function ProfileFormModal({ onSubmit, onCancel }: { onSubmit: (name: string, bio
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               placeholder="e.g., Luna Eclipse, TechTalk Daily"
-              className="w-full px-4 py-3 bg-slate-900 border border-gray-200 rounded-lg focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all"
+              className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all"
               required
             />
           </div>
@@ -442,7 +442,7 @@ function ProfileFormModal({ onSubmit, onCancel }: { onSubmit: (name: string, bio
               onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
               placeholder="Tell fans what you create and why they should support you..."
               rows={4}
-              className="w-full px-4 py-3 bg-slate-900 border border-gray-200 rounded-lg focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all resize-none"
+              className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all resize-none"
             />
           </div>
 
@@ -453,7 +453,7 @@ function ProfileFormModal({ onSubmit, onCancel }: { onSubmit: (name: string, bio
               value={formData.avatarUrl}
               onChange={(e) => setFormData({ ...formData, avatarUrl: e.target.value })}
               placeholder="https://example.com/your-photo.jpg"
-              className="w-full px-4 py-3 bg-slate-900 border border-gray-200 rounded-lg focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all"
+              className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all"
             />
             <p className="text-xs text-gray-600 mt-1.5">Optional: Link to your profile photo</p>
           </div>
@@ -462,14 +462,14 @@ function ProfileFormModal({ onSubmit, onCancel }: { onSubmit: (name: string, bio
             <button
               type="button"
               onClick={onCancel}
-              className="flex-1 px-6 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg font-medium transition-colors"
+              className="flex-1 px-6 py-3 bg-gray-600 hover:bg-gray-500 rounded-lg font-medium transition-colors"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={submitting || !formData.name}
-              className="flex-1 px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 disabled:from-slate-700 disabled:to-slate-700 disabled:cursor-not-allowed rounded-lg font-medium transition-all shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 disabled:shadow-none"
+              className="flex-1 px-6 py-3 bg-black hover:bg-gray-800 disabled:bg-gray-400 disabled:cursor-not-allowed rounded-lg font-medium transition-all shadow-lg shadow-xl hover:shadow-md disabled:shadow-none"
             >
               {submitting ? 'Creating...' : 'Create Profile'}
             </button>

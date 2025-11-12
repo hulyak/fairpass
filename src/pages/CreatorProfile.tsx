@@ -107,12 +107,12 @@ export function CreatorProfile({ creatorId, onBack }: { creatorId: string; onBac
       <div className="max-w-7xl mx-auto px-6 py-8">
         <button
           onClick={onBack}
-          className="mb-6 px-4 py-2 bg-white hover:bg-slate-700 rounded-lg font-medium transition-colors"
+          className="mb-6 px-4 py-2 bg-white hover:bg-gray-700 rounded-lg font-medium transition-colors"
         >
           ← Back
         </button>
 
-        <div className="p-8 bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-gray-200 mb-8">
+        <div className="p-8 bg-white rounded-2xl border border-gray-200 mb-8">
           <div className="flex items-start gap-6">
             <div className="w-24 h-24 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-2xl flex items-center justify-center text-white text-3xl font-bold">
               {creator.name.charAt(0).toUpperCase()}
@@ -125,14 +125,14 @@ export function CreatorProfile({ creatorId, onBack }: { creatorId: string; onBac
                   <p className="text-gray-600 mb-2">{creator.bio || 'No bio provided'}</p>
                   <p className="text-sm text-gray-600 font-mono">{formatAddress(creator.wallet_address)}</p>
                 </div>
-                <button className="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg font-medium transition-colors flex items-center gap-2">
+                <button className="px-4 py-2 bg-gray-600 hover:bg-gray-500 rounded-lg font-medium transition-colors flex items-center gap-2">
                   <Edit className="w-4 h-4" />
                   Edit
                 </button>
               </div>
 
               <div className="grid grid-cols-3 gap-6 mt-6">
-                <div className="p-4 bg-slate-900 rounded-lg">
+                <div className="p-4 bg-white rounded-lg">
                   <div className="flex items-center gap-2 mb-2">
                     <Users className="w-5 h-5 text-black" />
                     <span className="text-2xl font-bold">{creator.stats.totalMembers}</span>
@@ -140,7 +140,7 @@ export function CreatorProfile({ creatorId, onBack }: { creatorId: string; onBac
                   <div className="text-sm text-gray-600">Active Members</div>
                 </div>
 
-                <div className="p-4 bg-slate-900 rounded-lg">
+                <div className="p-4 bg-white rounded-lg">
                   <div className="flex items-center gap-2 mb-2">
                     <TrendingUp className="w-5 h-5 text-black" />
                     <span className="text-2xl font-bold">{creator.stats.totalRevenue.toFixed(2)}</span>
@@ -148,7 +148,7 @@ export function CreatorProfile({ creatorId, onBack }: { creatorId: string; onBac
                   <div className="text-sm text-gray-600">Total Revenue (DOT)</div>
                 </div>
 
-                <div className="p-4 bg-slate-900 rounded-lg">
+                <div className="p-4 bg-white rounded-lg">
                   <div className="flex items-center gap-2 mb-2">
                     <Award className="w-5 h-5 text-black" />
                     <span className="text-2xl font-bold">{creator.stats.activeTiers}</span>
@@ -166,14 +166,14 @@ export function CreatorProfile({ creatorId, onBack }: { creatorId: string; onBac
             {tiers.map((tier) => (
               <div
                 key={tier.id}
-                className="p-6 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl border border-gray-200 hover:border-emerald-500/50 transition-all"
+                className="p-6 bg-white rounded-xl border border-gray-200 hover:border-black transition-all"
               >
                 <div className="flex items-start justify-between mb-4">
                   <h3 className="text-2xl font-bold">{tier.name}</h3>
                   <Award className="w-8 h-8 text-black" />
                 </div>
 
-                <p className="text-slate-300 text-sm mb-6">{tier.description}</p>
+                <p className="text-gray-700 text-sm mb-6">{tier.description}</p>
 
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center justify-between text-sm">

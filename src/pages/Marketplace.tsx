@@ -236,17 +236,15 @@ export function Marketplace() {
             {filteredTiers.map((tier) => (
               <div
                 key={tier.id}
-                className="group relative p-6 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl border border-gray-200 hover:border-emerald-500/50 transition-all hover:scale-[1.02] hover:shadow-xl hover:shadow-emerald-500/20"
+                className="group relative p-6 bg-white rounded-xl border border-gray-200 hover:border-black transition-all hover:shadow-lg"
               >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-emerald-500/10 to-transparent rounded-full blur-2xl group-hover:from-emerald-500/20 transition-all" />
-
                 <div className="relative">
                   <div className="flex items-start gap-3 mb-4">
                     {tier.creator.avatar_url && (
                       <img
                         src={tier.creator.avatar_url}
                         alt={tier.creator.name}
-                        className="w-12 h-12 rounded-full object-cover border-2 border-gray-200 group-hover:border-emerald-500/50 transition-colors"
+                        className="w-12 h-12 rounded-full object-cover border-2 border-gray-200 group-hover:border-black transition-colors"
                       />
                     )}
                     <div className="flex-1">
@@ -258,34 +256,34 @@ export function Marketplace() {
                     </div>
                   </div>
 
-                  <p className="text-slate-300 text-sm mb-6 line-clamp-2 min-h-[40px]">{tier.description}</p>
+                  <p className="text-gray-700 text-sm mb-6 line-clamp-2 min-h-[40px]">{tier.description}</p>
 
-                  <div className="space-y-2.5 mb-6 p-4 bg-slate-900/50 rounded-lg border border-gray-200/50">
+                  <div className="space-y-2.5 mb-6 p-4 bg-gray-100 rounded-lg border border-gray-300">
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-gray-600">Price</span>
                       <span className="font-bold text-black text-lg">{tier.price_dot} DOT</span>
                     </div>
-                    <div className="h-px bg-slate-700/50" />
+                    <div className="h-px bg-gray-600/50" />
                     <div className="flex items-center justify-between text-xs">
                       <span className="text-gray-600 flex items-center gap-1">
                         <Clock className="w-3.5 h-3.5" />
                         Duration
                       </span>
-                      <span className="font-medium text-slate-300">{tier.duration_days} days</span>
+                      <span className="font-medium text-gray-700">{tier.duration_days} days</span>
                     </div>
                     <div className="flex items-center justify-between text-xs">
                       <span className="text-gray-600 flex items-center gap-1">
                         <TrendingUp className="w-3.5 h-3.5" />
                         Royalty
                       </span>
-                      <span className="font-medium text-slate-300">{tier.royalty_percentage}%</span>
+                      <span className="font-medium text-gray-700">{tier.royalty_percentage}%</span>
                     </div>
                   </div>
 
                   <button
                     onClick={() => handlePurchase(tier)}
                     disabled={!selectedAccount}
-                    className="w-full px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 disabled:from-slate-700 disabled:to-slate-700 disabled:cursor-not-allowed rounded-lg font-semibold transition-all shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 disabled:shadow-none group-hover:scale-105"
+                    className="w-full px-6 py-3 bg-black hover:bg-gray-800 disabled:bg-gray-400 disabled:cursor-not-allowed rounded-lg font-semibold transition-all shadow-lg shadow-xl hover:shadow-md disabled:shadow-none group-hover:scale-105"
                   >
                     {selectedAccount ? 'Purchase Membership' : 'Connect Wallet'}
                   </button>
@@ -320,14 +318,14 @@ export function Marketplace() {
 function ConfirmPurchaseModal({ tier, onConfirm, onCancel, purchasing }: { tier: TierWithCreator; onConfirm: () => void; onCancel: () => void; purchasing: boolean }) {
   return (
     <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-      <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-gray-200 max-w-md w-full shadow-2xl shadow-emerald-500/20">
+      <div className="bg-white rounded-2xl border border-gray-200 max-w-md w-full shadow-2xl shadow-lg">
         <div className="p-6 border-b border-gray-200">
           <h2 className="text-2xl font-bold">Confirm Purchase</h2>
           <p className="text-sm text-gray-600 mt-1">Review your membership details</p>
         </div>
 
         <div className="p-6 space-y-4">
-          <div className="p-4 bg-slate-900/50 rounded-lg border border-gray-200/50 space-y-3">
+          <div className="p-4 bg-gray-100 rounded-lg border border-gray-300 space-y-3">
             <div className="flex items-center justify-between">
               <span className="text-gray-600">Membership</span>
               <span className="font-bold">{tier.name}</span>
@@ -336,7 +334,7 @@ function ConfirmPurchaseModal({ tier, onConfirm, onCancel, purchasing }: { tier:
               <span className="text-gray-600">Creator</span>
               <span className="font-medium">{tier.creator.name}</span>
             </div>
-            <div className="h-px bg-slate-700/50" />
+            <div className="h-px bg-gray-600/50" />
             <div className="flex items-center justify-between">
               <span className="text-gray-600">Duration</span>
               <span className="font-medium">{tier.duration_days} days</span>
@@ -351,14 +349,14 @@ function ConfirmPurchaseModal({ tier, onConfirm, onCancel, purchasing }: { tier:
             <button
               onClick={onCancel}
               disabled={purchasing}
-              className="flex-1 px-6 py-3 bg-slate-700 hover:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg font-medium transition-colors"
+              className="flex-1 px-6 py-3 bg-gray-600 hover:bg-gray-500 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg font-medium transition-colors"
             >
               Cancel
             </button>
             <button
               onClick={onConfirm}
               disabled={purchasing}
-              className="flex-1 px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg font-medium transition-all shadow-lg shadow-emerald-500/30"
+              className="flex-1 px-6 py-3 bg-black hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg font-medium transition-all shadow-lg shadow-xl"
             >
               {purchasing ? 'Processing...' : 'Confirm Purchase'}
             </button>
@@ -372,15 +370,15 @@ function ConfirmPurchaseModal({ tier, onConfirm, onCancel, purchasing }: { tier:
 function SuccessModal({ tokenId, expiresAt, tierName, onClose }: { tokenId: string; expiresAt: Date; tierName: string; onClose: () => void }) {
   return (
     <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-      <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-emerald-500/50 max-w-md w-full shadow-2xl shadow-emerald-500/30">
+      <div className="bg-white rounded-2xl border border-black max-w-md w-full shadow-2xl shadow-xl">
         <div className="p-6 text-center">
-          <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-emerald-500/50">
+          <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-md">
             <CheckCircle2 className="w-8 h-8 text-white" />
           </div>
           <h2 className="text-2xl font-bold mb-2">Purchase Successful!</h2>
           <p className="text-gray-600 mb-6">Your membership NFT has been minted</p>
 
-          <div className="p-4 bg-slate-900/50 rounded-lg border border-gray-200/50 space-y-3 text-left mb-6">
+          <div className="p-4 bg-gray-100 rounded-lg border border-gray-300 space-y-3 text-left mb-6">
             <div className="flex items-center justify-between text-sm">
               <span className="text-gray-600">Membership</span>
               <span className="font-medium">{tierName}</span>
@@ -397,7 +395,7 @@ function SuccessModal({ tokenId, expiresAt, tierName, onClose }: { tokenId: stri
 
           <button
             onClick={onClose}
-            className="w-full px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 rounded-lg font-medium transition-all shadow-lg shadow-emerald-500/30"
+            className="w-full px-6 py-3 bg-black hover:bg-gray-800 rounded-lg font-medium transition-all shadow-lg shadow-xl"
           >
             Done
           </button>

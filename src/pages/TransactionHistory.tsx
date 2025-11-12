@@ -128,7 +128,7 @@ export function TransactionHistory() {
           </div>
           <button
             onClick={loadTransactions}
-            className="px-4 py-2 bg-white hover:bg-slate-700 rounded-lg font-medium transition-colors flex items-center gap-2"
+            className="px-4 py-2 bg-white hover:bg-gray-700 rounded-lg font-medium transition-colors flex items-center gap-2"
           >
             <RefreshCcw className="w-4 h-4" />
             Refresh
@@ -143,7 +143,7 @@ export function TransactionHistory() {
               className={`px-4 py-2 rounded-lg font-medium transition-colors whitespace-nowrap ${
                 filter === f
                   ? 'bg-black text-white'
-                  : 'bg-white text-gray-600 hover:bg-slate-700'
+                  : 'bg-white text-gray-600 hover:bg-gray-700'
               }`}
             >
               {f.charAt(0).toUpperCase() + f.slice(1)}
@@ -168,7 +168,7 @@ export function TransactionHistory() {
                 className={`p-6 rounded-xl border transition-all ${getTransactionColor(tx.transaction_type)}`}
               >
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-slate-900 rounded-lg">
+                  <div className="p-3 bg-gray-800 rounded-lg">
                     {getTransactionIcon(tx.transaction_type)}
                   </div>
 
@@ -185,7 +185,7 @@ export function TransactionHistory() {
                       </div>
                       {tx.price_dot && (
                         <div className="text-right">
-                          <div className={`text-xl font-bold ${isIncoming(tx) ? 'text-black' : 'text-slate-300'}`}>
+                          <div className={`text-xl font-bold ${isIncoming(tx) ? 'text-black' : 'text-gray-700'}`}>
                             {isIncoming(tx) ? '+' : '-'}{tx.price_dot} DOT
                           </div>
                           <div className="text-xs text-gray-600">
@@ -214,7 +214,7 @@ export function TransactionHistory() {
                       </div>
                     </div>
 
-                    <div className="mt-3 pt-3 border-t border-gray-200/50">
+                    <div className="mt-3 pt-3 border-t border-gray-300">
                       <div className="flex items-center justify-between">
                         <div className="text-xs text-gray-600">Transaction Hash</div>
                         <a
