@@ -169,7 +169,7 @@ export function MyMemberships() {
 
         {loading ? (
           <div className="text-center py-12">
-            <div className="inline-block w-8 h-8 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+            <div className="inline-block w-8 h-8 border-4 border-black border-t-transparent rounded-full animate-spin"></div>
           </div>
         ) : memberships.length === 0 ? (
           <div className="text-center py-12">
@@ -177,7 +177,7 @@ export function MyMemberships() {
             <p className="text-gray-600 mb-4">You don't have any memberships yet</p>
             <a
               href="/marketplace"
-              className="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors"
+              className="inline-block px-6 py-3 bg-black hover:bg-gray-800 text-white rounded-lg font-semibold transition-colors"
             >
               Browse Marketplace
             </a>
@@ -190,7 +190,7 @@ export function MyMemberships() {
                 <div
                   key={membership.id}
                   className={`p-6 bg-white rounded-xl border transition-all ${
-                    expired ? 'border-gray-200 opacity-60' : 'border-emerald-500/30'
+                    expired ? 'border-gray-200 opacity-60' : 'border-black/30'
                   }`}
                 >
                   <div className="flex items-start justify-between mb-4">
@@ -224,7 +224,7 @@ export function MyMemberships() {
                   <div className="flex gap-2">
                     {!expired && (
                       <>
-                        <button className="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors text-sm">
+                        <button className="flex-1 px-4 py-2 bg-black hover:bg-gray-800 text-white rounded-lg font-semibold transition-colors text-sm">
                           Access Content
                         </button>
                         <button
@@ -273,7 +273,7 @@ export function MyMemberships() {
                   value={listingPrice}
                   onChange={(e) => setListingPrice(e.target.value)}
                   placeholder="10.00"
-                  className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-emerald-500 text-lg"
+                  className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-black text-lg"
                   autoFocus
                 />
                 <div className="mt-2 text-xs text-gray-600">
@@ -281,7 +281,7 @@ export function MyMemberships() {
                 </div>
               </div>
 
-              <div className="p-4 bg-gray-100 border border-emerald-500/30 rounded-lg mb-6">
+              <div className="p-4 bg-gray-100 border border-black/30 rounded-lg mb-6">
                 <div className="text-sm text-black mb-1">Creator Royalty</div>
                 <div className="text-xs text-gray-600">
                   The creator will receive {selectedMembership.tier.royalty_percentage}% ({(parseFloat(listingPrice || '0') * selectedMembership.tier.royalty_percentage / 100).toFixed(2)} DOT) from this sale
@@ -291,7 +291,7 @@ export function MyMemberships() {
               <div className="flex gap-3">
                 <button
                   onClick={confirmListing}
-                  className="flex-1 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors"
+                  className="flex-1 px-6 py-3 bg-black hover:bg-gray-800 text-white rounded-lg font-semibold transition-colors"
                 >
                   List for Sale
                 </button>

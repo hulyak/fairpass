@@ -179,7 +179,7 @@ export function SecondaryMarket() {
 
         {loading ? (
           <div className="text-center py-12">
-            <div className="inline-block w-8 h-8 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+            <div className="inline-block w-8 h-8 border-4 border-black border-t-transparent rounded-full animate-spin"></div>
           </div>
         ) : listings.length === 0 ? (
           <div className="text-center py-12">
@@ -238,7 +238,7 @@ export function SecondaryMarket() {
                 <button
                   onClick={() => handlePurchase(listing)}
                   disabled={!selectedAccount || selectedAccount.address === listing.seller_wallet}
-                  className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed rounded-lg font-semibold transition-colors"
+                  className="w-full px-6 py-3 bg-black hover:bg-gray-800 text-white disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed rounded-lg font-semibold transition-colors"
                 >
                   {!selectedAccount
                     ? 'Connect Wallet'

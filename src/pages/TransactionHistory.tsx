@@ -77,7 +77,7 @@ export function TransactionHistory() {
       case 'mint':
         return <Sparkles className="w-5 h-5 text-black" />;
       case 'transfer':
-        return <ArrowUpRight className="w-5 h-5 text-blue-400" />;
+        return <ArrowUpRight className="w-5 h-5 text-gray-700" />;
       case 'renewal':
         return <RefreshCcw className="w-5 h-5 text-purple-400" />;
       case 'sale':
@@ -90,11 +90,11 @@ export function TransactionHistory() {
   const getTransactionColor = (type: string) => {
     switch (type) {
       case 'mint':
-        return 'border-emerald-500/30 bg-black/5';
+        return 'border-black/30 bg-black/5';
       case 'transfer':
-        return 'border-blue-500/30 bg-blue-500/5';
+        return 'border-gray-300 bg-gray-50';
       case 'renewal':
-        return 'border-purple-500/30 bg-purple-500/5';
+        return 'border-gray-300 bg-gray-50';
       case 'sale':
         return 'border-yellow-500/30 bg-yellow-500/5';
       default:
@@ -153,7 +153,7 @@ export function TransactionHistory() {
 
         {loading ? (
           <div className="text-center py-12">
-            <div className="inline-block w-8 h-8 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+            <div className="inline-block w-8 h-8 border-4 border-black border-t-transparent rounded-full animate-spin"></div>
           </div>
         ) : transactions.length === 0 ? (
           <div className="text-center py-12">
@@ -221,7 +221,7 @@ export function TransactionHistory() {
                           href={`https://polkadot.js.org/apps/#/explorer/query/${tx.tx_hash}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-xs font-mono text-black hover:text-emerald-300 transition-colors"
+                          className="text-xs font-mono text-gray-700 hover:text-black transition-colors"
                         >
                           {tx.tx_hash.slice(0, 12)}...{tx.tx_hash.slice(-8)}
                         </a>

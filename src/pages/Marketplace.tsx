@@ -177,7 +177,7 @@ export function Marketplace() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search by name, creator, or description..."
-                className="w-full pl-12 pr-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-emerald-500 text-white"
+                className="w-full pl-12 pr-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-black text-gray-900"
               />
             </div>
 
@@ -185,7 +185,7 @@ export function Marketplace() {
               <select
                 value={priceSort}
                 onChange={(e) => setPriceSort(e.target.value as any)}
-                className="px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-emerald-500 text-white"
+                className="px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-black text-gray-900"
               >
                 <option value="none">Sort by Price</option>
                 <option value="asc">Price: Low to High</option>
@@ -195,7 +195,7 @@ export function Marketplace() {
               <select
                 value={durationFilter}
                 onChange={(e) => setDurationFilter(e.target.value as any)}
-                className="px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-emerald-500 text-white"
+                className="px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-black text-gray-900"
               >
                 <option value="all">All Durations</option>
                 <option value="30">Up to 30 days</option>
@@ -214,7 +214,7 @@ export function Marketplace() {
                   setPriceSort('none');
                   setDurationFilter('all');
                 }}
-                className="text-black hover:text-emerald-300 transition-colors"
+                className="text-gray-600 hover:text-black transition-colors"
               >
                 Clear filters
               </button>
@@ -224,7 +224,7 @@ export function Marketplace() {
 
         {loading ? (
           <div className="text-center py-12">
-            <div className="inline-block w-8 h-8 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+            <div className="inline-block w-8 h-8 border-4 border-black border-t-transparent rounded-full animate-spin"></div>
           </div>
         ) : filteredTiers.length === 0 ? (
           <div className="text-center py-12">
@@ -283,7 +283,7 @@ export function Marketplace() {
                   <button
                     onClick={() => handlePurchase(tier)}
                     disabled={!selectedAccount}
-                    className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed rounded-lg font-semibold transition-all shadow-sm hover:shadow-md disabled:shadow-none"
+                    className="w-full px-6 py-3 bg-black hover:bg-gray-800 text-white disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed rounded-lg font-semibold transition-all shadow-sm hover:shadow-md disabled:shadow-none"
                   >
                     {selectedAccount ? 'Purchase Membership' : 'Connect Wallet'}
                   </button>
@@ -349,14 +349,14 @@ function ConfirmPurchaseModal({ tier, onConfirm, onCancel, purchasing }: { tier:
             <button
               onClick={onCancel}
               disabled={purchasing}
-              className="flex-1 px-6 py-3 bg-gray-600 hover:bg-gray-500 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg font-medium transition-colors"
+              className="flex-1 px-6 py-3 bg-white border-2 border-gray-300 hover:border-black text-gray-900 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg font-medium transition-colors"
             >
               Cancel
             </button>
             <button
               onClick={onConfirm}
               disabled={purchasing}
-              className="flex-1 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white disabled:opacity-50 disabled:cursor-not-allowed rounded-lg font-semibold transition-all shadow-sm"
+              className="flex-1 px-6 py-3 bg-black hover:bg-gray-800 text-white disabled:opacity-50 disabled:cursor-not-allowed rounded-lg font-semibold transition-all shadow-sm"
             >
               {purchasing ? 'Processing...' : 'Confirm Purchase'}
             </button>
@@ -372,7 +372,7 @@ function SuccessModal({ tokenId, expiresAt, tierName, onClose }: { tokenId: stri
     <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-2xl border border-black max-w-md w-full shadow-2xl shadow-xl">
         <div className="p-6 text-center">
-          <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
+          <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
             <CheckCircle2 className="w-8 h-8 text-white" />
           </div>
           <h2 className="text-2xl font-bold mb-2">Purchase Successful!</h2>
@@ -395,7 +395,7 @@ function SuccessModal({ tokenId, expiresAt, tierName, onClose }: { tokenId: stri
 
           <button
             onClick={onClose}
-            className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-all shadow-sm"
+            className="w-full px-6 py-3 bg-black hover:bg-gray-800 text-white rounded-lg font-semibold transition-all shadow-sm"
           >
             Done
           </button>

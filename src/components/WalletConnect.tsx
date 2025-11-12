@@ -71,7 +71,7 @@ export function WalletConnect() {
               <div className="space-y-4 mb-6">
                 <div className="p-4 bg-slate-800 rounded-lg">
                   <h3 className="font-semibold mb-2 flex items-center gap-2">
-                    <span className="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center text-sm">1</span>
+                    <span className="w-6 h-6 bg-black rounded-full flex items-center justify-center text-sm">1</span>
                     Install the Extension
                   </h3>
                   <p className="text-sm text-slate-400 mb-3">
@@ -82,7 +82,7 @@ export function WalletConnect() {
                       href="https://chrome.google.com/webstore/detail/polkadot%7Bjs%7D-extension/mopnmbcafieddcagagdcbnhejhlodfdd"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 px-4 py-2 bg-emerald-500 hover:bg-emerald-600 rounded-lg font-medium transition-colors flex items-center justify-center gap-2 text-sm"
+                      className="flex-1 px-4 py-2 bg-black hover:bg-gray-800 text-white rounded-lg font-medium transition-colors flex items-center justify-center gap-2 text-sm"
                     >
                       <Download className="w-4 h-4" />
                       Chrome
@@ -91,7 +91,7 @@ export function WalletConnect() {
                       href="https://addons.mozilla.org/en-US/firefox/addon/polkadot-js-extension/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 px-4 py-2 bg-emerald-500 hover:bg-emerald-600 rounded-lg font-medium transition-colors flex items-center justify-center gap-2 text-sm"
+                      className="flex-1 px-4 py-2 bg-black hover:bg-gray-800 text-white rounded-lg font-medium transition-colors flex items-center justify-center gap-2 text-sm"
                     >
                       <Download className="w-4 h-4" />
                       Firefox
@@ -101,7 +101,7 @@ export function WalletConnect() {
 
                 <div className="p-4 bg-slate-800 rounded-lg">
                   <h3 className="font-semibold mb-2 flex items-center gap-2">
-                    <span className="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center text-sm">2</span>
+                    <span className="w-6 h-6 bg-black rounded-full flex items-center justify-center text-sm">2</span>
                     Create or Import Account
                   </h3>
                   <p className="text-sm text-slate-400">
@@ -111,7 +111,7 @@ export function WalletConnect() {
 
                 <div className="p-4 bg-slate-800 rounded-lg">
                   <h3 className="font-semibold mb-2 flex items-center gap-2">
-                    <span className="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center text-sm">3</span>
+                    <span className="w-6 h-6 bg-black rounded-full flex items-center justify-center text-sm">3</span>
                     Connect to FairPass
                   </h3>
                   <p className="text-sm text-slate-400">
@@ -120,8 +120,8 @@ export function WalletConnect() {
                 </div>
               </div>
 
-              <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg mb-6">
-                <p className="text-sm text-blue-400 mb-3">
+              <div className="p-4 bg-gray-100 border border-gray-300 rounded-lg mb-6">
+                <p className="text-sm text-gray-700 mb-3">
                   <strong>Want to try without installing?</strong> Use demo mode to explore FairPass with a simulated wallet.
                 </p>
                 <button
@@ -129,7 +129,7 @@ export function WalletConnect() {
                     connectDemoMode();
                     setShowInstallModal(false);
                   }}
-                  className="w-full px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded-lg font-medium transition-colors"
+                  className="w-full px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-medium transition-colors"
                 >
                   Use Demo Mode
                 </button>
@@ -138,7 +138,7 @@ export function WalletConnect() {
               <div className="flex gap-3">
                 <button
                   onClick={() => window.location.reload()}
-                  className="flex-1 px-6 py-3 bg-emerald-500 hover:bg-emerald-600 rounded-lg font-semibold transition-colors"
+                  className="flex-1 px-6 py-3 bg-black hover:bg-gray-800 text-white rounded-lg font-semibold transition-colors"
                 >
                   Refresh Page
                 </button>
