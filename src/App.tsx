@@ -75,7 +75,7 @@ function AppContent() {
         <div className="absolute -bottom-8 left-20 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-4000"></div>
       </div>
 
-      <nav className="fixed top-0 w-full bg-white/90 backdrop-blur-xl z-50 border-b border-blue-200 shadow-sm">
+      <nav className="fixed top-0 w-full bg-white/90 backdrop-blur-xl z-[100] border-b border-blue-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-500 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/30">
@@ -351,7 +351,7 @@ function AppContent() {
 
 function Navigation({ currentPage, onNavigate }: { currentPage: Page; onNavigate: (page: Page) => void }) {
   return (
-    <nav className="sticky top-0 w-full bg-white/90 backdrop-blur-xl z-50 border-b border-blue-200 shadow-sm">
+    <nav className="sticky top-0 w-full bg-white/90 backdrop-blur-xl z-[100] border-b border-blue-200 shadow-sm">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <button onClick={() => onNavigate('home')} className="flex items-center gap-3 group">
           <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-500 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/30 group-hover:scale-110 transition-transform">
