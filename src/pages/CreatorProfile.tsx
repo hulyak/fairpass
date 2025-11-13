@@ -83,7 +83,7 @@ export function CreatorProfile({ creatorId, onBack }: { creatorId: string; onBac
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="inline-block w-8 h-8 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+        <div className="inline-block w-8 h-8 border-4 border-black border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
   }
@@ -94,7 +94,7 @@ export function CreatorProfile({ creatorId, onBack }: { creatorId: string; onBac
         <div className="text-center">
           <User className="w-16 h-16 text-gray-500 mx-auto mb-4" />
           <p className="text-gray-600 mb-4">Creator not found</p>
-          <button onClick={onBack} className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors">
+          <button onClick={onBack} className="px-6 py-2 bg-black hover:bg-gray-800 text-white rounded-lg font-semibold transition-colors">
             Go Back
           </button>
         </div>
@@ -114,7 +114,7 @@ export function CreatorProfile({ creatorId, onBack }: { creatorId: string; onBac
 
         <div className="p-8 bg-white rounded-2xl border border-gray-200 mb-8">
           <div className="flex items-start gap-6">
-            <div className="w-24 h-24 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-2xl flex items-center justify-center text-white text-3xl font-bold">
+            <div className="w-24 h-24 bg-black rounded-2xl flex items-center justify-center text-white text-3xl font-bold">
               {creator.name.charAt(0).toUpperCase()}
             </div>
 
@@ -193,7 +193,7 @@ export function CreatorProfile({ creatorId, onBack }: { creatorId: string; onBac
                   </div>
                 </div>
 
-                <button className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors">
+                <button className="w-full px-6 py-3 bg-black hover:bg-gray-800 text-white rounded-lg font-semibold transition-colors">
                   Purchase
                 </button>
               </div>
