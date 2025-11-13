@@ -113,18 +113,6 @@ export function WalletConnect() {
                       </div>
                     </div>
                   </div>
-
-                  <div className="p-5 bg-gradient-to-br from-blue-50 to-white rounded-xl border border-blue-200">
-                    <div className="flex items-start gap-3">
-                      <span className="w-7 h-7 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">3</span>
-                      <div>
-                        <h3 className="font-bold text-slate-900 mb-2">Connect to FairPass</h3>
-                        <p className="text-sm text-slate-600">
-                          Refresh this page and click "Connect Wallet" to authorize FairPass
-                        </p>
-                      </div>
-                    </div>
-                  </div>
                 </div>
 
                 <div className="p-5 bg-gradient-to-br from-slate-50 to-white rounded-xl border-2 border-slate-200 mb-6 text-center">
@@ -141,6 +129,20 @@ export function WalletConnect() {
                   >
                     Use Demo Mode
                   </button>
+                </div>
+
+                <div className="space-y-4 mb-6">
+                  <div className="p-5 bg-gradient-to-br from-blue-50 to-white rounded-xl border border-blue-200">
+                    <div className="flex items-start gap-3">
+                      <span className="w-7 h-7 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">3</span>
+                      <div>
+                        <h3 className="font-bold text-slate-900 mb-2">Connect to FairPass</h3>
+                        <p className="text-sm text-slate-600">
+                          Refresh this page and click "Connect Wallet" to authorize FairPass
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="flex gap-3">
