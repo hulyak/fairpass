@@ -222,58 +222,58 @@ function AppContent() {
         </div>
       </section>
 
-      <section id="how-it-works" className="py-20 px-6 bg-white">
+      <section id="how-it-works" className="py-20 px-6 bg-gradient-to-br from-slate-50 to-blue-50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black">How It Works</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">How It Works</h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               Four simple steps to launch your decentralized membership
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="relative">
-              <div className="absolute -left-4 top-0 w-10 h-10 bg-black rounded-full flex items-center justify-center font-bold text-white text-lg">
+              <div className="absolute -left-4 top-0 w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-500 rounded-full flex items-center justify-center font-bold text-white text-lg shadow-lg shadow-blue-500/30">
                 1
               </div>
-              <div className="ml-10 p-6 bg-gray-50 rounded-lg border border-gray-200">
-                <h3 className="text-xl font-bold mb-3 text-black">Creator Onboards</h3>
-                <p className="text-gray-600 text-sm">
+              <div className="ml-10 p-6 bg-white rounded-xl border border-blue-200 hover:border-blue-400 transition-all hover:shadow-lg">
+                <h3 className="text-xl font-bold mb-3 text-slate-900">Creator Onboards</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
                   Connect your Polkadot wallet, create membership tiers (Gold, Silver, Bronze), and set duration and pricing.
                 </p>
               </div>
             </div>
 
             <div className="relative">
-              <div className="absolute -left-4 top-0 w-10 h-10 bg-black rounded-full flex items-center justify-center font-bold text-white text-lg">
+              <div className="absolute -left-4 top-0 w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-500 rounded-full flex items-center justify-center font-bold text-white text-lg shadow-lg shadow-blue-500/30">
                 2
               </div>
-              <div className="ml-10 p-6 bg-gray-50 rounded-lg border border-gray-200">
-                <h3 className="text-xl font-bold mb-3 text-black">Fan Purchases</h3>
-                <p className="text-gray-600 text-sm">
+              <div className="ml-10 p-6 bg-white rounded-xl border border-blue-200 hover:border-blue-400 transition-all hover:shadow-lg">
+                <h3 className="text-xl font-bold mb-3 text-slate-900">Fan Purchases</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
                   Fans sign a transaction, receive a time-bound NFT, and get instant access to gated content and communities.
                 </p>
               </div>
             </div>
 
             <div className="relative">
-              <div className="absolute -left-4 top-0 w-10 h-10 bg-black rounded-full flex items-center justify-center font-bold text-white text-lg">
+              <div className="absolute -left-4 top-0 w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-500 rounded-full flex items-center justify-center font-bold text-white text-lg shadow-lg shadow-blue-500/30">
                 3
               </div>
-              <div className="ml-10 p-6 bg-gray-50 rounded-lg border border-gray-200">
-                <h3 className="text-xl font-bold mb-3 text-black">Automatic Verification</h3>
-                <p className="text-gray-600 text-sm">
+              <div className="ml-10 p-6 bg-white rounded-xl border border-blue-200 hover:border-blue-400 transition-all hover:shadow-lg">
+                <h3 className="text-xl font-bold mb-3 text-slate-900">Automatic Verification</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
                   Our Access Control API checks NFT validity on-chain. Access granted or denied based on real-time expiry status.
                 </p>
               </div>
             </div>
 
             <div className="relative">
-              <div className="absolute -left-4 top-0 w-10 h-10 bg-black rounded-full flex items-center justify-center font-bold text-white text-lg">
+              <div className="absolute -left-4 top-0 w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-500 rounded-full flex items-center justify-center font-bold text-white text-lg shadow-lg shadow-blue-500/30">
                 4
               </div>
-              <div className="ml-10 p-6 bg-gray-50 rounded-lg border border-gray-200">
-                <h3 className="text-xl font-bold mb-3 text-black">Renew or Trade</h3>
-                <p className="text-gray-600 text-sm">
+              <div className="ml-10 p-6 bg-white rounded-xl border border-blue-200 hover:border-blue-400 transition-all hover:shadow-lg">
+                <h3 className="text-xl font-bold mb-3 text-slate-900">Renew or Trade</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
                   Members can renew directly or sell on secondary markets. Creators earn automatic royalties from resales.
                 </p>
               </div>
@@ -282,42 +282,42 @@ function AppContent() {
         </div>
       </section>
 
-      <section id="vision" className="py-20 px-6 bg-gray-50">
+      <section id="vision" className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
-          <div className="p-12 bg-white rounded-2xl border-2 border-black">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center text-black">Our Vision</h2>
-            <p className="text-lg text-gray-700 leading-relaxed text-center mb-8">
+          <div className="p-12 bg-gradient-to-br from-blue-50 to-slate-50 rounded-3xl border-2 border-blue-200 shadow-xl">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center text-slate-900">Our Vision</h2>
+            <p className="text-lg text-slate-700 leading-relaxed text-center mb-8">
               FairPass empowers a new generation of creators to own their audience and revenue. Using NFTs not as speculation, but as utility — with frictionless, portable subscriptions across all chains.
             </p>
             <div className="grid md:grid-cols-3 gap-6 text-center">
               <div>
-                <div className="text-2xl font-bold text-black mb-1">Own</div>
-                <div className="text-sm text-gray-600">Your Audience</div>
+                <div className="text-2xl font-bold text-blue-600 mb-1">Own</div>
+                <div className="text-sm text-slate-600">Your Audience</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-black mb-1">Control</div>
-                <div className="text-sm text-gray-600">Your Revenue</div>
+                <div className="text-2xl font-bold text-blue-600 mb-1">Control</div>
+                <div className="text-sm text-slate-600">Your Revenue</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-black mb-1">Build</div>
-                <div className="text-sm text-gray-600">On Web3</div>
+                <div className="text-2xl font-bold text-blue-600 mb-1">Build</div>
+                <div className="text-sm text-slate-600">On Web3</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 px-6 bg-white">
+      <section className="py-20 px-6 bg-gradient-to-br from-slate-50 to-blue-50">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">
             Ready to Take Control?
           </h2>
-          <p className="text-lg text-gray-600 mb-12">
+          <p className="text-lg text-slate-600 mb-12">
             Join the movement of creators building sovereign memberships on Polkadot
           </p>
           <button
             onClick={() => setCurrentPage('dashboard')}
-            className="px-10 py-4 bg-black hover:bg-gray-800 text-white rounded-lg font-medium text-lg flex items-center gap-3 mx-auto transition-colors"
+            className="px-10 py-4 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white rounded-lg font-medium text-lg flex items-center gap-3 mx-auto transition-all shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40"
           >
             Launch Your Membership
             <ArrowRight className="w-5 h-5" />
