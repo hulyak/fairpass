@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Wallet, ChevronDown, LogOut, AlertCircle, Download, X } from 'lucide-react';
 import { useWallet } from '../contexts/WalletContext';
 import { formatAddress, getAccountBalance } from '../lib/polkadot';
@@ -46,17 +47,17 @@ export function WalletConnect() {
           {isConnecting ? 'Connecting...' : 'Connect Wallet'}
         </button>
 
-        {showInstallModal && (
-          <div className="fixed inset-0 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center z-[9999] p-4 overflow-y-auto">
-            <div className="bg-white rounded-2xl max-w-2xl w-full relative shadow-2xl border border-blue-200 my-8">
+        {showInstallModal && createPortal(
+          <div className="fixed top-20 left-0 right-0 bottom-0 bg-slate-900/80 backdrop-blur-sm z-[9999] overflow-y-auto p-4">
+            <div className="bg-white rounded-2xl max-w-xl w-full relative shadow-2xl border border-blue-200 my-4 mx-auto min-h-fit">
               <button
                 onClick={() => setShowInstallModal(false)}
-                className="absolute top-4 right-4 p-2 hover:bg-slate-100 rounded-lg transition-colors text-slate-600"
+                className="absolute top-3 right-3 p-2 hover:bg-slate-100 rounded-lg transition-colors text-slate-600"
               >
-                <X className="w-5 h-5" />
+                <X className="w-4 h-4" />
               </button>
 
-              <div className="p-8">
+              <div className="p-6">
                 <div className="flex items-start gap-4 mb-8">
                   <div className="p-3 bg-blue-50 rounded-xl border border-blue-200">
                     <AlertCircle className="w-8 h-8 text-blue-600" />
@@ -161,7 +162,8 @@ export function WalletConnect() {
                 </div>
               </div>
             </div>
-          </div>
+          </div>,
+          document.body
         )}
       </>
     );
