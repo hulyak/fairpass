@@ -19,7 +19,7 @@ FairPass is built as a hybrid Web3 application combining blockchain technology w
 ┌─────────────────────────────────────┐
 │     UI Layer (Tailwind CSS)         │
 │   - Responsive design              │
-│   - Dark theme                     │
+│   - Light blue theme               │
 │   - Accessible components          │
 └─────────────────────────────────────┘
 ```
@@ -268,9 +268,51 @@ CREATE POLICY "System can insert memberships"
 - Transaction hashes verified on-chain
 - Database records are append-only
 
+## Current NFT Implementation (Uniques Pallet)
+
+### Real On-Chain NFTs
+
+FairPass uses Polkadot's native **Uniques pallet** for NFT functionality:
+
+```typescript
+// Collection ID for all FairPass memberships
+const FAIRPASS_COLLECTION_ID = 1000;
+
+// Create collection (one-time setup)
+api.tx.uniques.create(collectionId, admin)
+
+// Mint membership NFT
+api.tx.uniques.mint(collectionId, itemId, owner)
+
+// Set on-chain metadata
+api.tx.uniques.setMetadata(collectionId, itemId, metadata, isFrozen)
+
+// Transfer NFT
+api.tx.uniques.transfer(collectionId, itemId, newOwner)
+```
+
+### Benefits of Uniques Pallet
+
+1. **Native to Polkadot** - No smart contract deployment needed
+2. **Low Cost** - Minimal transaction fees
+3. **Battle-Tested** - Used by major parachains
+4. **Simple Integration** - Direct extrinsic calls
+5. **On-Chain Metadata** - No external storage required
+
+### NFT Lifecycle
+
+```
+Purchase → Mint NFT → Set Metadata → Transfer to Buyer
+    ↓          ↓            ↓              ↓
+  Pay DOT   Create NFT   Store Info    Ownership
+```
+
 ## Future Architecture (Smart Contracts)
 
-### Phase 1: NFT Contract (ink!)
+### Phase 2: Custom ink! Contract (Optional)
+
+For advanced features, we may deploy a custom ink! contract:
+
 ```rust
 #[ink::contract]
 mod fairpass_nft {

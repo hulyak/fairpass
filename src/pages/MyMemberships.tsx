@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Award, Clock, ExternalLink, RefreshCw, Tag, DollarSign } from 'lucide-react';
+import { Award, Clock, RefreshCw, Tag, DollarSign } from 'lucide-react';
 import { useWallet } from '../contexts/WalletContext';
 import { supabase, Membership } from '../lib/supabase';
 
@@ -8,6 +8,7 @@ type MembershipWithDetails = Membership & {
     name: string;
     price_dot: number;
     duration_days: number;
+    royalty_percentage: number;
     creator: {
       name: string;
     };
@@ -39,6 +40,7 @@ export function MyMemberships() {
           name,
           price_dot,
           duration_days,
+          royalty_percentage,
           creator:creators(name)
         )
       `)
@@ -140,23 +142,23 @@ export function MyMemberships() {
 
   if (!selectedAccount) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50 flex items-center justify-center">
         <div className="text-center">
-          <Award className="w-16 h-16 text-black mx-auto mb-4" />
-          <h2 className="text-2xl font-bold mb-2">Connect Your Wallet</h2>
-          <p className="text-gray-600">Please connect your Polkadot wallet to view your memberships</p>
+          <Award className="w-16 h-16 text-blue-600 mx-auto mb-4" />
+          <h2 className="text-2xl font-bold mb-2 text-slate-900">Connect Your Wallet</h2>
+          <p className="text-slate-600">Please connect your Polkadot wallet to view your memberships</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50">
       <div className="max-w-7xl mx-auto px-6 py-8">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-4xl font-bold mb-2">My Memberships</h1>
-            <p className="text-gray-600">Manage your creator memberships</p>
+            <h1 className="text-4xl font-bold mb-2 text-slate-900">My Memberships</h1>
+            <p className="text-slate-600">Manage your creator memberships</p>
           </div>
           <button
             onClick={loadMemberships}
@@ -198,7 +200,7 @@ export function MyMemberships() {
                       <h3 className="text-xl font-bold mb-1">{membership.tier.name}</h3>
                       <p className="text-sm text-gray-600">by {membership.tier.creator.name}</p>
                     </div>
-                    <Award className={`w-6 h-6 ${expired ? 'text-gray-500' : 'text-black'}`} />
+                    <Award className={`w-6 h-6 ${expired ? 'text-gray-500' : 'text-blue-600'}`} />
                   </div>
 
                   <div className="space-y-2 mb-4">
@@ -215,7 +217,7 @@ export function MyMemberships() {
                         <Clock className="w-4 h-4" />
                         {expired ? 'Expired' : 'Expires'}
                       </span>
-                      <span className={expired ? 'text-red-400' : 'text-black'}>
+                      <span className={expired ? 'text-red-400' : 'text-blue-600'}>
                         {expired ? new Date(membership.expires_at).toLocaleDateString() : getTimeRemaining(membership.expires_at)}
                       </span>
                     </div>
@@ -252,7 +254,7 @@ export function MyMemberships() {
         )}
 
         {showListingModal && selectedMembership && (
-          <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-6">
+          <div className="fixed inset-0 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center z-50 p-6">
             <div className="bg-white border border-gray-200 rounded-2xl p-8 max-w-md w-full">
               <h2 className="text-2xl font-bold mb-4">List Membership for Sale</h2>
 
@@ -282,7 +284,7 @@ export function MyMemberships() {
               </div>
 
               <div className="p-4 bg-gray-100 border border-emerald-500/30 rounded-lg mb-6">
-                <div className="text-sm text-black mb-1">Creator Royalty</div>
+                <div className="text-sm text-slate-900 mb-1">Creator Royalty</div>
                 <div className="text-xs text-gray-600">
                   The creator will receive {selectedMembership.tier.royalty_percentage}% ({(parseFloat(listingPrice || '0') * selectedMembership.tier.royalty_percentage / 100).toFixed(2)} DOT) from this sale
                 </div>

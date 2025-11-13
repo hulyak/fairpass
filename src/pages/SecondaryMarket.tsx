@@ -8,6 +8,7 @@ type ListingWithDetails = MarketplaceListing & {
   membership: {
     token_id: string;
     expires_at: string;
+    transfer_count: number;
     tier: {
       name: string;
       duration_days: number;
@@ -36,6 +37,7 @@ export function SecondaryMarket() {
         membership:memberships(
           token_id,
           expires_at,
+          transfer_count,
           tier:membership_tiers(
             name,
             duration_days,
@@ -138,17 +140,17 @@ export function SecondaryMarket() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50">
       <div className="max-w-7xl mx-auto px-6 py-8">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2">Secondary Marketplace</h1>
-          <p className="text-gray-600">Buy and sell membership NFTs from other collectors</p>
+          <h1 className="text-4xl font-bold mb-2 text-slate-900">Secondary Marketplace</h1>
+          <p className="text-slate-600">Buy and sell membership NFTs from other collectors</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 mb-8">
           <div className="p-6 bg-white rounded-xl border border-gray-200">
             <div className="flex items-center justify-between mb-2">
-              <Tag className="w-6 h-6 text-black" />
+              <Tag className="w-6 h-6 text-blue-600" />
               <span className="text-2xl font-bold">{listings.length}</span>
             </div>
             <div className="text-gray-600">Active Listings</div>
@@ -156,7 +158,7 @@ export function SecondaryMarket() {
 
           <div className="p-6 bg-white rounded-xl border border-gray-200">
             <div className="flex items-center justify-between mb-2">
-              <TrendingUp className="w-6 h-6 text-black" />
+              <TrendingUp className="w-6 h-6 text-blue-600" />
               <span className="text-2xl font-bold">
                 {listings.length > 0
                   ? (listings.reduce((sum, l) => sum + l.price_dot, 0) / listings.length).toFixed(2)
@@ -168,7 +170,7 @@ export function SecondaryMarket() {
 
           <div className="p-6 bg-white rounded-xl border border-gray-200">
             <div className="flex items-center justify-between mb-2">
-              <ShoppingCart className="w-6 h-6 text-black" />
+              <ShoppingCart className="w-6 h-6 text-blue-600" />
               <span className="text-2xl font-bold">
                 {listings.reduce((sum, l) => sum + l.price_dot, 0).toFixed(2)}
               </span>

@@ -75,7 +75,7 @@ export function TransactionHistory() {
   const getTransactionIcon = (type: string) => {
     switch (type) {
       case 'mint':
-        return <Sparkles className="w-5 h-5 text-black" />;
+        return <Sparkles className="w-5 h-5 text-blue-600" />;
       case 'transfer':
         return <ArrowUpRight className="w-5 h-5 text-blue-400" />;
       case 'renewal':
@@ -90,7 +90,7 @@ export function TransactionHistory() {
   const getTransactionColor = (type: string) => {
     switch (type) {
       case 'mint':
-        return 'border-emerald-500/30 bg-black/5';
+        return 'border-blue-500/30 bg-blue-500/5';
       case 'transfer':
         return 'border-blue-500/30 bg-blue-500/5';
       case 'renewal':
@@ -110,7 +110,7 @@ export function TransactionHistory() {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <History className="w-16 h-16 text-black mx-auto mb-4" />
+          <History className="w-16 h-16 text-blue-600 mx-auto mb-4" />
           <h2 className="text-2xl font-bold mb-2">Connect Your Wallet</h2>
           <p className="text-gray-600">Please connect your Polkadot wallet to view your transaction history</p>
         </div>
@@ -142,7 +142,7 @@ export function TransactionHistory() {
               onClick={() => setFilter(f as any)}
               className={`px-4 py-2 rounded-lg font-medium transition-colors whitespace-nowrap ${
                 filter === f
-                  ? 'bg-black text-white'
+                  ? 'bg-blue-600 text-white'
                   : 'bg-white text-gray-600 hover:bg-gray-700'
               }`}
             >
@@ -185,7 +185,7 @@ export function TransactionHistory() {
                       </div>
                       {tx.price_dot && (
                         <div className="text-right">
-                          <div className={`text-xl font-bold ${isIncoming(tx) ? 'text-black' : 'text-gray-700'}`}>
+                          <div className={`text-xl font-bold ${isIncoming(tx) ? 'text-blue-600' : 'text-gray-700'}`}>
                             {isIncoming(tx) ? '+' : '-'}{tx.price_dot} DOT
                           </div>
                           <div className="text-xs text-gray-600">
@@ -221,7 +221,7 @@ export function TransactionHistory() {
                           href={`https://polkadot.js.org/apps/#/explorer/query/${tx.tx_hash}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-xs font-mono text-black hover:text-emerald-300 transition-colors"
+                          className="text-xs font-mono text-blue-600 hover:text-blue-700 transition-colors"
                         >
                           {tx.tx_hash.slice(0, 12)}...{tx.tx_hash.slice(-8)}
                         </a>

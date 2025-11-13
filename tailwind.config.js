@@ -33,6 +33,34 @@ export default {
           900: '#f4f4f5',
         },
       },
+      animation: {
+        'blob': 'blob 7s infinite',
+        'glow': 'glow 2s ease-in-out infinite alternate',
+      },
+      keyframes: {
+        blob: {
+          '0%': {
+            transform: 'translate(0px, 0px) scale(1)',
+          },
+          '33%': {
+            transform: 'translate(30px, -50px) scale(1.1)',
+          },
+          '66%': {
+            transform: 'translate(-20px, 20px) scale(0.9)',
+          },
+          '100%': {
+            transform: 'translate(0px, 0px) scale(1)',
+          },
+        },
+        glow: {
+          'from': {
+            'box-shadow': '0 0 20px rgba(168, 85, 247, 0.4)',
+          },
+          'to': {
+            'box-shadow': '0 0 30px rgba(168, 85, 247, 0.8), 0 0 40px rgba(6, 182, 212, 0.6)',
+          },
+        },
+      },
     },
   },
   plugins: [],

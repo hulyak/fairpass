@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Plus, TrendingUp, Users, DollarSign, Award, X } from 'lucide-react';
 import { useWallet } from '../contexts/WalletContext';
 import { supabase, Creator, MembershipTier } from '../lib/supabase';
+import { NFTCollectionSetup } from '../components/NFTCollectionSetup';
 
 export function CreatorDashboard() {
   const { selectedAccount } = useWallet();
@@ -106,11 +107,11 @@ export function CreatorDashboard() {
 
   if (!selectedAccount) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50 flex items-center justify-center">
         <div className="text-center">
-          <Award className="w-16 h-16 text-black mx-auto mb-4" />
-          <h2 className="text-2xl font-bold mb-2">Connect Your Wallet</h2>
-          <p className="text-gray-600">Please connect your Polkadot wallet to access the creator dashboard</p>
+          <Award className="w-16 h-16 text-blue-600 mx-auto mb-4" />
+          <h2 className="text-2xl font-bold mb-2 text-slate-900">Connect Your Wallet</h2>
+          <p className="text-slate-600">Please connect your Polkadot wallet to access the creator dashboard</p>
         </div>
       </div>
     );
@@ -118,10 +119,10 @@ export function CreatorDashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading creator dashboard...</p>
+          <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-slate-600">Loading creator dashboard...</p>
         </div>
       </div>
     );
@@ -129,22 +130,22 @@ export function CreatorDashboard() {
 
   if (!creator) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50 flex items-center justify-center">
         <div className="max-w-md text-center p-8">
-          <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-md">
+          <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-blue-500/30">
             <Award className="w-10 h-10 text-white" />
           </div>
-          <h2 className="text-3xl font-bold mb-3">Become a Creator</h2>
-          <p className="text-gray-600 mb-8 leading-relaxed">
+          <h2 className="text-3xl font-bold mb-3 text-slate-900">Become a Creator</h2>
+          <p className="text-slate-600 mb-8 leading-relaxed">
             Start your journey on FairPass. Create membership tiers, build your community, and earn without platform fees.
           </p>
           <button
             onClick={() => setShowProfileForm(true)}
-            className="w-full px-6 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold text-lg transition-all hover:scale-105 shadow-sm"
+            className="w-full px-6 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold text-lg transition-all hover:scale-105 shadow-lg shadow-blue-500/30"
           >
             Create Your Profile
           </button>
-          <p className="text-xs text-gray-600 mt-4">
+          <p className="text-xs text-slate-600 mt-4">
             Connect your wallet to get started
           </p>
         </div>
@@ -160,7 +161,7 @@ export function CreatorDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50">
       <div className="max-w-7xl mx-auto px-6 py-8">
         <div className="mb-8">
           <div className="flex items-center gap-4 mb-4">
@@ -211,6 +212,10 @@ export function CreatorDashboard() {
             </div>
             <div className="text-gray-600 text-sm">Active Tiers</div>
           </div>
+        </div>
+
+        <div className="mb-8">
+          <NFTCollectionSetup />
         </div>
 
         <div className="bg-white/50 rounded-xl border border-gray-200 p-6">

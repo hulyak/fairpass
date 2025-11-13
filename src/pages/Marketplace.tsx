@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { ShoppingBag, Clock, TrendingUp, Award, Search, CheckCircle2, X } from 'lucide-react';
+import { ShoppingBag, Clock, TrendingUp, Award, Search, CheckCircle2 } from 'lucide-react';
 import { useWallet } from '../contexts/WalletContext';
-import { supabase, MembershipTier, Membership } from '../lib/supabase';
+import { supabase, MembershipTier } from '../lib/supabase';
 import { transferDOT, mintMembershipNFT, MembershipNFTMetadata } from '../lib/polkadot';
 
 type TierWithCreator = MembershipTier & {
@@ -114,7 +114,7 @@ export function Marketplace() {
         expiresAt: expiresAt.toISOString(),
       };
 
-      const { tokenId, txHash } = await mintMembershipNFT(selectedAccount.address, metadata);
+      const { tokenId } = await mintMembershipNFT(selectedAccount.address, metadata);
 
       let paymentTxHash = 'demo-mode';
       if (!selectedAccount.meta.source.includes('demo')) {
@@ -161,11 +161,11 @@ export function Marketplace() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50">
       <div className="max-w-7xl mx-auto px-6 py-8">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2">Membership Marketplace</h1>
-          <p className="text-gray-600">Discover and purchase creator memberships</p>
+          <h1 className="text-4xl font-bold mb-2 text-slate-900">Membership Marketplace</h1>
+          <p className="text-slate-600">Discover and purchase creator memberships</p>
         </div>
 
         <div className="mb-8 space-y-4">
@@ -177,7 +177,7 @@ export function Marketplace() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search by name, creator, or description..."
-                className="w-full pl-12 pr-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-emerald-500 text-white"
+                className="w-full pl-12 pr-4 py-3 bg-white border border-blue-200 rounded-lg focus:outline-none focus:border-blue-500 text-slate-900"
               />
             </div>
 
@@ -185,7 +185,7 @@ export function Marketplace() {
               <select
                 value={priceSort}
                 onChange={(e) => setPriceSort(e.target.value as any)}
-                className="px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-emerald-500 text-white"
+                className="px-4 py-3 bg-white border border-blue-200 rounded-lg focus:outline-none focus:border-blue-500 text-slate-900"
               >
                 <option value="none">Sort by Price</option>
                 <option value="asc">Price: Low to High</option>
@@ -195,7 +195,7 @@ export function Marketplace() {
               <select
                 value={durationFilter}
                 onChange={(e) => setDurationFilter(e.target.value as any)}
-                className="px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-emerald-500 text-white"
+                className="px-4 py-3 bg-white border border-blue-200 rounded-lg focus:outline-none focus:border-blue-500 text-slate-900"
               >
                 <option value="all">All Durations</option>
                 <option value="30">Up to 30 days</option>
@@ -214,7 +214,7 @@ export function Marketplace() {
                   setPriceSort('none');
                   setDurationFilter('all');
                 }}
-                className="text-black hover:text-emerald-300 transition-colors"
+                className="text-blue-600 hover:text-blue-700 transition-colors"
               >
                 Clear filters
               </button>
@@ -224,7 +224,7 @@ export function Marketplace() {
 
         {loading ? (
           <div className="text-center py-12">
-            <div className="inline-block w-8 h-8 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+            <div className="inline-block w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
           </div>
         ) : filteredTiers.length === 0 ? (
           <div className="text-center py-12">
@@ -236,7 +236,7 @@ export function Marketplace() {
             {filteredTiers.map((tier) => (
               <div
                 key={tier.id}
-                className="group relative p-6 bg-white rounded-xl border border-gray-200 hover:border-black transition-all hover:shadow-lg"
+                className="group relative p-6 bg-white rounded-xl border border-blue-200 hover:border-blue-400 transition-all hover:shadow-xl hover:shadow-blue-500/10"
               >
                 <div className="relative">
                   <div className="flex items-start gap-3 mb-4">
@@ -252,7 +252,7 @@ export function Marketplace() {
                       <p className="text-xs text-gray-600">by {tier.creator.name}</p>
                     </div>
                     <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <Award className="w-5 h-5 text-black" />
+                      <Award className="w-5 h-5 text-blue-600" />
                     </div>
                   </div>
 
@@ -261,7 +261,7 @@ export function Marketplace() {
                   <div className="space-y-2.5 mb-6 p-4 bg-gray-100 rounded-lg border border-gray-300">
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-gray-600">Price</span>
-                      <span className="font-bold text-black text-lg">{tier.price_dot} DOT</span>
+                      <span className="font-bold text-blue-600 text-lg">{tier.price_dot} DOT</span>
                     </div>
                     <div className="h-px bg-gray-600/50" />
                     <div className="flex items-center justify-between text-xs">
@@ -317,8 +317,8 @@ export function Marketplace() {
 
 function ConfirmPurchaseModal({ tier, onConfirm, onCancel, purchasing }: { tier: TierWithCreator; onConfirm: () => void; onCancel: () => void; purchasing: boolean }) {
   return (
-    <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl border border-gray-200 max-w-md w-full shadow-2xl shadow-lg">
+    <div className="fixed inset-0 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-2xl border border-blue-200 max-w-md w-full shadow-2xl shadow-blue-500/20">
         <div className="p-6 border-b border-gray-200">
           <h2 className="text-2xl font-bold">Confirm Purchase</h2>
           <p className="text-sm text-gray-600 mt-1">Review your membership details</p>
@@ -341,7 +341,7 @@ function ConfirmPurchaseModal({ tier, onConfirm, onCancel, purchasing }: { tier:
             </div>
             <div className="flex items-center justify-between text-lg">
               <span className="text-gray-600">Price</span>
-              <span className="font-bold text-black">{tier.price_dot} DOT</span>
+              <span className="font-bold text-blue-600">{tier.price_dot} DOT</span>
             </div>
           </div>
 
@@ -369,10 +369,10 @@ function ConfirmPurchaseModal({ tier, onConfirm, onCancel, purchasing }: { tier:
 
 function SuccessModal({ tokenId, expiresAt, tierName, onClose }: { tokenId: string; expiresAt: Date; tierName: string; onClose: () => void }) {
   return (
-    <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl border border-black max-w-md w-full shadow-2xl shadow-xl">
+    <div className="fixed inset-0 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-2xl border border-blue-200 max-w-md w-full shadow-2xl shadow-blue-500/20">
         <div className="p-6 text-center">
-          <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
+          <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-500/30">
             <CheckCircle2 className="w-8 h-8 text-white" />
           </div>
           <h2 className="text-2xl font-bold mb-2">Purchase Successful!</h2>
@@ -385,7 +385,7 @@ function SuccessModal({ tokenId, expiresAt, tierName, onClose }: { tokenId: stri
             </div>
             <div className="flex items-center justify-between text-sm">
               <span className="text-gray-600">Token ID</span>
-              <span className="font-mono text-xs text-black">{tokenId}</span>
+              <span className="font-mono text-xs text-blue-600">{tokenId}</span>
             </div>
             <div className="flex items-center justify-between text-sm">
               <span className="text-gray-600">Expires</span>

@@ -1,12 +1,10 @@
 # FairPass - Decentralized Creator Membership Platform
 
-> **Polkadot Hackathon 2025 Submission**
-> **Theme:** User-centric Apps
-> **Tagline:** Radically fair, radically creator-first
+Radically fair, radically creator-first
 
 ## 🎯 Project Overview
 
-FairPass is a decentralized membership platform built on Polkadot that empowers creators to monetize their content directly, without platform fees. Unlike traditional platforms (Patreon, OnlyFans) that take 5-20% cuts, FairPass enables creators to keep 100% of their earnings through blockchain technology and NFT-based memberships.
+FairPass is a decentralized membership platform built on Polkadot that empowers creators to monetize their content directly, without platform fees. Unlike traditional platforms (Patreon) that take 5-20% cuts, FairPass enables creators to keep 100% of their earnings through blockchain technology and NFT-based memberships.
 
 ### The Problem
 - Traditional platforms charge 5-20% fees on creator earnings
@@ -41,8 +39,9 @@ FairPass is a decentralized membership platform built on Polkadot that empowers 
 - **Real Polkadot Integration** - Connects to Westend testnet
 - **Wallet Support** - Polkadot.js extension integration
 - **On-chain Payments** - Real DOT transfers for purchases
+- **Real NFT Minting** - Uses Polkadot Uniques pallet for on-chain NFTs
 - **Supabase Backend** - Decentralized data storage with PostgreSQL
-- **NFT Minting** - Membership tokens with metadata
+- **Verifiable Ownership** - All memberships are blockchain-verified assets
 - **Smart Contracts Ready** - Architecture prepared for ink! contracts
 
 ## 🛠️ Technologies Used
@@ -101,7 +100,15 @@ npm run dev
 
 The app will open at `http://localhost:5173`
 
-### Step 7: Build for Production
+### Step 7: Initialize NFT Collection (First Time Only)
+1. Navigate to Creator Dashboard
+2. Click "Initialize Collection" in the NFT Setup card
+3. Approve the transaction (requires ~0.1 WND)
+4. Wait for confirmation
+
+**Note**: This only needs to be done once. See [NFT_INTEGRATION.md](./NFT_INTEGRATION.md) for details.
+
+### Step 8: Build for Production
 ```bash
 npm run build
 npm run preview
@@ -181,44 +188,6 @@ transactions
 └── created_at
 ```
 
-## 🎯 Hackathon Criteria Alignment
-
-### 1. Technological Implementation ⭐⭐⭐⭐⭐
-- **Real Polkadot Integration**: Connects to Westend testnet
-- **Polkadot.js Extension**: Full wallet support
-- **On-chain Transactions**: Actual DOT transfers
-- **NFT Architecture**: Ready for smart contract deployment
-- **Clean Code**: TypeScript, modular components, best practices
-
-### 2. Design ⭐⭐⭐⭐⭐
-- **User-First UX**: Intuitive navigation and workflows
-- **Beautiful UI**: Modern, professional design with Tailwind
-- **Responsive**: Works on all devices
-- **Accessibility**: Clear labels, proper contrast, keyboard navigation
-- **Smooth Animations**: Professional transitions and interactions
-
-### 3. Potential Impact ⭐⭐⭐⭐⭐
-- **Creator Economy**: $100B+ market opportunity
-- **Platform Revolution**: First truly fair creator platform
-- **Polkadot Adoption**: Brings real users to ecosystem
-- **NFT Utility**: Beyond art - practical memberships
-- **Scalability**: Can support millions of creators
-
-### 4. Creativity ⭐⭐⭐⭐⭐
-- **Novel Use Case**: NFT memberships (not just collectibles)
-- **Secondary Market**: Fans can trade subscriptions
-- **Zero Fees**: Unprecedented for creator platforms
-- **Royalty System**: Creators earn from resales
-- **Web3 + Web2 UX**: Blockchain power with familiar interface
-
-## 🔐 Security & Privacy
-
-- **Row Level Security** - Database-level access control
-- **Wallet Signatures** - All transactions require user approval
-- **No Private Keys** - Never stores or accesses wallet keys
-- **HTTPS Only** - Secure communication
-- **Supabase RLS Policies** - Granular data permissions
-
 ## 🚧 Current Limitations & Future Roadmap
 
 ### Current State (Hackathon Demo)
@@ -226,14 +195,16 @@ transactions
 ✅ Real Polkadot wallet connection
 ✅ Westend testnet integration
 ✅ Real DOT transfers
+✅ Real NFT minting with Uniques pallet
+✅ On-chain metadata storage
 ✅ Complete database architecture
-⚠️ NFT minting simulated (metadata generated)
 
 ### Phase 1 (Post-Hackathon)
-- [ ] Deploy ink! smart contract for NFTs
-- [ ] Integrate contract calls for minting
-- [ ] IPFS integration for metadata storage
+- [x] Real NFT minting with Uniques pallet
+- [x] On-chain metadata storage
+- [ ] IPFS integration for rich metadata (images, attributes)
 - [ ] Enhanced secondary market features
+- [ ] NFT gallery and portfolio view
 
 ### Phase 2 (Production)
 - [ ] Mainnet deployment
@@ -248,39 +219,16 @@ transactions
 - [ ] Advanced discovery algorithms
 - [ ] API for third-party integrations
 
-## 📹 Demo Video
 
-**Coming Soon** - 3-minute walkthrough showcasing:
-1. Wallet connection
-2. Creator profile setup
-3. Membership tier creation
-4. Fan purchasing membership
-5. NFT ownership verification
-6. Secondary market trading
 
-## 👥 Team
-
-Built with ❤️ for Polkadot Hackathon 2025
 
 ## 📄 License
 
 MIT License - See LICENSE file for details
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **Polkadot Foundation** - For the amazing Web3 infrastructure
 - **Parity Technologies** - For Substrate and Polkadot.js
 - **Supabase** - For the database platform
 - **Web3 Foundation** - For supporting the decentralized web
-
-## 📞 Contact & Links
-
-- **Demo**: [Coming Soon]
-- **Repository**: https://github.com/yourusername/fairpass
-- **Documentation**: See `/docs` folder
-- **Support**: Open an issue on GitHub
-
----
-
-**Built for Polkadot Hackathon 2025**
-*Empowering creators, one membership at a time* 🚀
