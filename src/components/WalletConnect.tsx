@@ -47,7 +47,7 @@ export function WalletConnect() {
         </button>
 
         {showInstallModal && (
-          <div className="fixed inset-0 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center z-50 p-4 overflow-y-auto">
+          <div className="fixed inset-0 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center z-[9999] p-4 overflow-y-auto">
             <div className="bg-white rounded-2xl max-w-2xl w-full relative shadow-2xl border border-blue-200 my-8">
               <button
                 onClick={() => setShowInstallModal(false)}
