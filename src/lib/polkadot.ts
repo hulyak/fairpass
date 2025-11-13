@@ -118,6 +118,7 @@ const FAIRPASS_COLLECTION_ID = 1000;
 /**
  * Creates the FairPass NFT collection if it doesn't exist
  * Only needs to be called once per collection
+ * Updated to use the NFTs pallet
  */
 export async function createNFTCollection(
   creatorAddress: string
@@ -125,11 +126,18 @@ export async function createNFTCollection(
   const api = await getPolkadotApi();
   const injector = await web3FromAddress(creatorAddress);
 
-  // Create a new NFT collection
-  const createCollection = api.tx.uniques.create(
-    FAIRPASS_COLLECTION_ID,
-    creatorAddress // admin
-  );
+  // Create a new NFT collection using the NFTs pallet
+  // Config: settings = 0 (everything unlocked by default)
+  const config = {
+    settings: 0, // Bitflag: 0 = all unlocked (transferrable, metadata unlocked, etc.)
+    maxSupply: null, // No max supply limit
+    mintSettings: {
+      mintType: { Issuer: null }, // Only issuer can mint
+      defaultItemSettings: 0,
+    },
+  };
+
+  const createCollection = api.tx.nfts.create(creatorAddress, config);
 
   return new Promise((resolve, reject) => {
     createCollection
@@ -138,7 +146,7 @@ export async function createNFTCollection(
           console.log('Collection created in block:', txHash.toString());
           resolve(txHash.toString());
         }
-        
+
         // Check for errors
         events.forEach(({ event }) => {
           if (api.events.system.ExtrinsicFailed.is(event)) {
@@ -152,7 +160,7 @@ export async function createNFTCollection(
 }
 
 /**
- * Mints a real NFT on Westend using the Uniques pallet
+ * Mints a real NFT on Westend using the NFTs pallet (updated from deprecated Uniques)
  * Returns the token ID and transaction hash
  */
 export async function mintMembershipNFT(
@@ -169,17 +177,18 @@ export async function mintMembershipNFT(
     const itemId = timestamp + random;
     const tokenId = `FP-${itemId}`;
 
-    console.log('Minting NFT on Westend Uniques pallet...');
+    console.log('Minting NFT on Westend NFTs pallet...');
     console.log('Collection ID:', FAIRPASS_COLLECTION_ID);
     console.log('Item ID:', itemId);
     console.log('Owner:', ownerAddress);
     console.log('Metadata:', metadata);
 
-    // Mint the NFT
-    const mintTx = api.tx.uniques.mint(
+    // Mint the NFT using the NFTs pallet
+    const mintTx = api.tx.nfts.mint(
       FAIRPASS_COLLECTION_ID,
       itemId,
-      ownerAddress
+      ownerAddress, // mintTo address
+      null // witnessData (optional)
     );
 
     const txHash = await new Promise<string>((resolve, reject) => {
@@ -187,11 +196,11 @@ export async function mintMembershipNFT(
         .signAndSend(ownerAddress, { signer: injector.signer }, ({ status, txHash, events }) => {
           if (status.isInBlock) {
             console.log('NFT minted in block:', txHash.toString());
-            
+
             // Check for success
             let success = false;
             events.forEach(({ event }) => {
-              if (api.events.uniques.Issued.is(event)) {
+              if (api.events.nfts.Issued.is(event)) {
                 success = true;
                 console.log('NFT successfully issued!');
               }
@@ -199,7 +208,7 @@ export async function mintMembershipNFT(
                 reject(new Error('NFT minting failed'));
               }
             });
-            
+
             if (success || status.isInBlock) {
               resolve(txHash.toString());
             }
@@ -211,11 +220,10 @@ export async function mintMembershipNFT(
     // Optionally set metadata on-chain
     try {
       const metadataStr = JSON.stringify(metadata);
-      const setMetadataTx = api.tx.uniques.setMetadata(
+      const setMetadataTx = api.tx.nfts.setMetadata(
         FAIRPASS_COLLECTION_ID,
         itemId,
-        metadataStr,
-        false // isFrozen
+        metadataStr
       );
 
       await new Promise<void>((resolve) => {
@@ -238,7 +246,7 @@ export async function mintMembershipNFT(
     return { tokenId, txHash };
   } catch (error) {
     console.error('NFT minting failed:', error);
-    
+
     // Fallback to mock for demo purposes if real minting fails
     console.log('Falling back to simulated NFT for demo...');
     const tokenId = generateMockTokenId();
@@ -248,16 +256,16 @@ export async function mintMembershipNFT(
 }
 
 /**
- * Check if an NFT exists and who owns it
+ * Check if an NFT exists and who owns it (updated to use NFTs pallet)
  */
 export async function getNFTOwner(itemId: number): Promise<string | null> {
   try {
     const api = await getPolkadotApi();
-    const owner: any = await api.query.uniques.asset(FAIRPASS_COLLECTION_ID, itemId);
-    
-    if (owner.isSome) {
-      const ownerData: any = owner.unwrap();
-      return ownerData.owner.toString();
+    const item: any = await api.query.nfts.item(FAIRPASS_COLLECTION_ID, itemId);
+
+    if (item.isSome) {
+      const itemData: any = item.unwrap();
+      return itemData.owner.toString();
     }
     return null;
   } catch (error) {
@@ -267,7 +275,7 @@ export async function getNFTOwner(itemId: number): Promise<string | null> {
 }
 
 /**
- * Transfer an NFT to a new owner
+ * Transfer an NFT to a new owner (updated to use NFTs pallet)
  */
 export async function transferNFT(
   fromAddress: string,
@@ -277,7 +285,7 @@ export async function transferNFT(
   const api = await getPolkadotApi();
   const injector = await web3FromAddress(fromAddress);
 
-  const transferTx = api.tx.uniques.transfer(
+  const transferTx = api.tx.nfts.transfer(
     FAIRPASS_COLLECTION_ID,
     itemId,
     toAddress
