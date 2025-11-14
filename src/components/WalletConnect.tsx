@@ -63,9 +63,9 @@ export function WalletConnect() {
                     <AlertCircle className="w-8 h-8 text-blue-600" />
                   </div>
                   <div>
-                    <h2 className="text-2xl font-bold mb-2 text-slate-900">Polkadot.js Extension Required</h2>
+                    <h2 className="text-2xl font-bold mb-2 text-slate-900">Polkadot Wallet Required</h2>
                     <p className="text-slate-600 leading-relaxed">
-                      To use FairPass with real blockchain features, install the Polkadot.js browser extension. It's your secure wallet for managing memberships on Polkadot.
+                      To use FairPass with real blockchain features, install a Polkadot wallet extension. Choose from Polkadot.js, SubWallet, or Talisman.
                     </p>
                   </div>
                 </div>
@@ -75,29 +75,61 @@ export function WalletConnect() {
                     <div className="flex items-start gap-3 mb-3">
                       <span className="w-7 h-7 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
                       <div className="flex-1">
-                        <h3 className="font-bold text-slate-900 mb-2">Install the Extension</h3>
-                        <p className="text-sm text-slate-600 mb-3">
-                          Download and install Polkadot.js extension for your browser
-                        </p>
-                        <div className="flex gap-2">
-                          <a
-                            href="https://chrome.google.com/webstore/detail/polkadot%7Bjs%7D-extension/mopnmbcafieddcagagdcbnhejhlodfdd"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex-1 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors flex items-center justify-center gap-2 text-sm shadow-lg shadow-blue-500/30"
-                          >
-                            <Download className="w-4 h-4" />
-                            Chrome
-                          </a>
-                          <a
-                            href="https://addons.mozilla.org/en-US/firefox/addon/polkadot-js-extension/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex-1 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors flex items-center justify-center gap-2 text-sm shadow-lg shadow-blue-500/30"
-                          >
-                            <Download className="w-4 h-4" />
-                            Firefox
-                          </a>
+                        <h3 className="font-bold text-slate-900 mb-3">Choose & Install a Wallet</h3>
+
+                        <div className="space-y-3">
+                          <div className="border border-slate-200 rounded-lg p-3">
+                            <h4 className="font-semibold text-slate-900 mb-1">Polkadot.js</h4>
+                            <p className="text-xs text-slate-600 mb-2">Official Polkadot extension</p>
+                            <div className="flex gap-2">
+                              <a
+                                href="https://chrome.google.com/webstore/detail/polkadot%7Bjs%7D-extension/mopnmbcafieddcagagdcbnhejhlodfdd"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex-1 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors flex items-center justify-center gap-2 text-xs"
+                              >
+                                <Download className="w-3 h-3" />
+                                Chrome
+                              </a>
+                              <a
+                                href="https://addons.mozilla.org/en-US/firefox/addon/polkadot-js-extension/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex-1 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors flex items-center justify-center gap-2 text-xs"
+                              >
+                                <Download className="w-3 h-3" />
+                                Firefox
+                              </a>
+                            </div>
+                          </div>
+
+                          <div className="border border-slate-200 rounded-lg p-3">
+                            <h4 className="font-semibold text-slate-900 mb-1">SubWallet</h4>
+                            <p className="text-xs text-slate-600 mb-2">Multi-chain wallet with advanced features</p>
+                            <a
+                              href="https://subwallet.app/download.html"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="w-full px-3 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-colors flex items-center justify-center gap-2 text-xs"
+                            >
+                              <Download className="w-3 h-3" />
+                              Download SubWallet
+                            </a>
+                          </div>
+
+                          <div className="border border-slate-200 rounded-lg p-3">
+                            <h4 className="font-semibold text-slate-900 mb-1">Talisman</h4>
+                            <p className="text-xs text-slate-600 mb-2">User-friendly Polkadot wallet</p>
+                            <a
+                              href="https://talisman.xyz/"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="w-full px-3 py-2 bg-pink-600 hover:bg-pink-700 text-white rounded-lg font-medium transition-colors flex items-center justify-center gap-2 text-xs"
+                            >
+                              <Download className="w-3 h-3" />
+                              Download Talisman
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -109,7 +141,7 @@ export function WalletConnect() {
                       <div>
                         <h3 className="font-bold text-slate-900 mb-2">Create or Import Account</h3>
                         <p className="text-sm text-slate-600">
-                          After installation, create a new Polkadot account or import an existing one using your seed phrase
+                          After installation, create a new account or import an existing one. All three wallets work seamlessly with FairPass.
                         </p>
                       </div>
                     </div>
@@ -118,7 +150,7 @@ export function WalletConnect() {
 
                 <div className="p-5 bg-gradient-to-br from-slate-50 to-white rounded-xl border-2 border-slate-200 mb-6 text-center">
                   <p className="text-sm text-slate-700 mb-4 font-medium">
-                    <strong className="text-slate-900">Want to try without installing?</strong><br />
+                    <strong className="text-slate-900">Want to try without a wallet?</strong><br />
                     Use demo mode to explore FairPass with a simulated wallet.
                   </p>
                   <button

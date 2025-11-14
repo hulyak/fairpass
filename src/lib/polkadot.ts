@@ -3,12 +3,30 @@ import { InjectedAccountWithMeta } from '@polkadot/extension-inject/types';
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import { BN } from '@polkadot/util';
 
+// Check if we're in demo mode
+function isDemoMode(): boolean {
+  return localStorage.getItem('wallet_connected') === 'demo';
+}
+
 const APP_NAME = 'FairPass';
-const WESTEND_RPC = 'wss://westend-rpc.polkadot.io';
+// Use Westend Asset Hub (system parachain) which has the NFTs pallet
+// The relay chain (westend-rpc.polkadot.io) does NOT have NFTs pallet
+const WESTEND_ASSET_HUB_RPC = 'wss://westend-asset-hub-rpc.polkadot.io';
 
 export async function enablePolkadotExtension(): Promise<boolean> {
+  // Try to enable all available extensions (Polkadot.js, SubWallet, Talisman, etc.)
   const extensions = await web3Enable(APP_NAME);
-  return extensions.length > 0;
+
+  if (extensions.length > 0) {
+    console.log('✅ Wallet extensions found:', extensions.map(ext => ext.name).join(', '));
+    return true;
+  } else {
+    console.error('❌ No wallet extensions found. Please install:');
+    console.log('- Polkadot.js: https://polkadot.js.org/extension/');
+    console.log('- SubWallet: https://subwallet.app/download.html');
+    console.log('- Talisman: https://talisman.xyz/');
+    return false;
+  }
 }
 
 export async function getPolkadotAccounts(): Promise<InjectedAccountWithMeta[]> {
@@ -55,9 +73,30 @@ export async function getPolkadotApi(): Promise<ApiPromise> {
     return apiInstance;
   }
 
-  const provider = new WsProvider(WESTEND_RPC);
-  apiInstance = await ApiPromise.create({ provider });
-  return apiInstance;
+  try {
+    console.log('🔗 Connecting to Westend Asset Hub...');
+    console.log('📡 RPC Endpoint:', WESTEND_ASSET_HUB_RPC);
+
+    const provider = new WsProvider(WESTEND_ASSET_HUB_RPC, 5000); // 5 second timeout
+    apiInstance = await ApiPromise.create({ provider });
+
+    // Verify NFTs pallet is available
+    if (!apiInstance.tx.nfts) {
+      console.error('❌ NFTs pallet not found on this network!');
+      throw new Error('NFTs pallet is not available on this network. Make sure you are connected to Westend Asset Hub.');
+    }
+
+    console.log('✅ Connected to Westend Asset Hub successfully!');
+    console.log('📦 NFTs pallet available:', !!apiInstance.tx.nfts);
+    return apiInstance;
+  } catch (error) {
+    console.error('❌ Failed to connect to Westend Asset Hub:', error);
+    console.log('💡 Troubleshooting:');
+    console.log('1. Check your internet connection');
+    console.log('2. Try refreshing the page');
+    console.log('3. If using SubWallet, add Westend Asset Hub network manually');
+    throw error;
+  }
 }
 
 export async function disconnectApi(): Promise<void> {
@@ -68,11 +107,27 @@ export async function disconnectApi(): Promise<void> {
 }
 
 export async function getAccountBalance(address: string): Promise<string> {
+  // Demo mode: return fake balance
+  if (isDemoMode()) {
+    console.log('🎭 Demo Mode: Simulated balance of 100 WND');
+    return '100.0000';
+  }
+
   try {
     const api = await getPolkadotApi();
     const accountInfo: any = await api.query.system.account(address);
     const free = accountInfo.data.free.toString();
     const formatted = (Number(free) / 1e12).toFixed(4);
+
+    console.log(`Balance on Asset Hub: ${formatted} WND`);
+
+    // If balance is 0, show helpful message
+    if (formatted === '0.0000') {
+      console.log('💡 Need test tokens? Get them directly on Asset Hub:');
+      console.log('🔗 https://faucet.polkadot.io/westend?parachain=1000');
+      console.log('📝 Enter your address, complete captcha, get 100 WND instantly!');
+    }
+
     return formatted;
   } catch (error) {
     console.error('Failed to get balance:', error);
@@ -123,6 +178,15 @@ const FAIRPASS_COLLECTION_ID = 1000;
 export async function createNFTCollection(
   creatorAddress: string
 ): Promise<string> {
+  // Demo mode: simulate collection creation
+  if (isDemoMode()) {
+    console.log('🎭 Demo Mode: Simulating collection creation...');
+    await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate delay
+    const txHash = generateMockTxHash();
+    console.log('✅ Demo collection created:', txHash);
+    return txHash;
+  }
+
   const api = await getPolkadotApi();
   const injector = await web3FromAddress(creatorAddress);
 
@@ -167,6 +231,18 @@ export async function mintMembershipNFT(
   ownerAddress: string,
   metadata: MembershipNFTMetadata
 ): Promise<{ tokenId: string; txHash: string }> {
+  // Demo mode: simulate NFT minting
+  if (isDemoMode()) {
+    console.log('🎭 Demo Mode: Simulating NFT mint...');
+    console.log('Metadata:', metadata);
+    await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate delay
+    const tokenId = generateMockTokenId();
+    const txHash = generateMockTxHash();
+    console.log('✅ Demo NFT minted:', tokenId);
+    console.log('Transaction hash:', txHash);
+    return { tokenId, txHash };
+  }
+
   try {
     const api = await getPolkadotApi();
     const injector = await web3FromAddress(ownerAddress);
@@ -259,6 +335,12 @@ export async function mintMembershipNFT(
  * Check if an NFT exists and who owns it (updated to use NFTs pallet)
  */
 export async function getNFTOwner(itemId: number): Promise<string | null> {
+  // Demo mode: return demo account address
+  if (isDemoMode()) {
+    console.log('🎭 Demo Mode: Returning demo owner for NFT', itemId);
+    return '5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY';
+  }
+
   try {
     const api = await getPolkadotApi();
     const item: any = await api.query.nfts.item(FAIRPASS_COLLECTION_ID, itemId);
@@ -282,6 +364,18 @@ export async function transferNFT(
   toAddress: string,
   itemId: number
 ): Promise<string> {
+  // Demo mode: simulate transfer
+  if (isDemoMode()) {
+    console.log('🎭 Demo Mode: Simulating NFT transfer...');
+    console.log(`From: ${fromAddress}`);
+    console.log(`To: ${toAddress}`);
+    console.log(`Item ID: ${itemId}`);
+    await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate delay
+    const txHash = generateMockTxHash();
+    console.log('✅ Demo NFT transferred:', txHash);
+    return txHash;
+  }
+
   const api = await getPolkadotApi();
   const injector = await web3FromAddress(fromAddress);
 
