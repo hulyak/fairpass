@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowRight, Shield, Zap, Users, TrendingUp, Wallet as WalletIcon, Lock, Globe, LayoutDashboard, ShoppingBag, Award, Store } from 'lucide-react';
+import { ArrowRight, Shield, Zap, Users, TrendingUp, Wallet as WalletIcon, Lock, Globe, LayoutDashboard, ShoppingBag, Award, Store, Menu, X } from 'lucide-react';
 import { WalletProvider } from './contexts/WalletContext';
 import { WalletConnect } from './components/WalletConnect';
 import { CreatorDashboard } from './pages/CreatorDashboard';
@@ -20,6 +20,7 @@ function App() {
 
 function AppContent() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   if (currentPage === 'dashboard') {
     return (
@@ -83,6 +84,8 @@ function AppContent() {
             </div>
             <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">FairPass</span>
           </div>
+
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
             <button onClick={() => setCurrentPage('marketplace')} className="text-slate-600 hover:text-blue-600 transition-colors text-sm font-medium">Marketplace</button>
             <button onClick={() => setCurrentPage('secondary')} className="text-slate-600 hover:text-blue-600 transition-colors text-sm font-medium">Resale</button>
@@ -90,7 +93,50 @@ function AppContent() {
             <button onClick={() => setCurrentPage('dashboard')} className="text-slate-600 hover:text-blue-600 transition-colors text-sm font-medium">For Creators</button>
             <WalletConnect />
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 text-slate-600 hover:text-blue-600 transition-colors"
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t border-blue-200 bg-white">
+            <div className="px-6 py-4 space-y-3">
+              <button
+                onClick={() => { setCurrentPage('marketplace'); setMobileMenuOpen(false); }}
+                className="w-full text-left px-4 py-3 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors text-sm font-medium"
+              >
+                Marketplace
+              </button>
+              <button
+                onClick={() => { setCurrentPage('secondary'); setMobileMenuOpen(false); }}
+                className="w-full text-left px-4 py-3 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors text-sm font-medium"
+              >
+                Resale
+              </button>
+              <button
+                onClick={() => { setCurrentPage('memberships'); setMobileMenuOpen(false); }}
+                className="w-full text-left px-4 py-3 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors text-sm font-medium"
+              >
+                My Memberships
+              </button>
+              <button
+                onClick={() => { setCurrentPage('dashboard'); setMobileMenuOpen(false); }}
+                className="w-full text-left px-4 py-3 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors text-sm font-medium"
+              >
+                For Creators
+              </button>
+              <div className="pt-3">
+                <WalletConnect />
+              </div>
+            </div>
+          </div>
+        )}
       </nav>
 
       <section className="relative pt-32 pb-20 px-6">
@@ -350,6 +396,8 @@ function AppContent() {
 }
 
 function Navigation({ currentPage, onNavigate }: { currentPage: Page; onNavigate: (page: Page) => void }) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <nav className="sticky top-0 w-full bg-white/90 backdrop-blur-xl z-[100] border-b border-blue-200 shadow-sm">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -359,54 +407,115 @@ function Navigation({ currentPage, onNavigate }: { currentPage: Page; onNavigate
           </div>
           <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">FairPass</span>
         </button>
-        <div className="flex items-center gap-2">
+
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-2">
           <button
             onClick={() => onNavigate('marketplace')}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all text-sm font-medium ${
-              currentPage === 'marketplace' 
-                ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30' 
+              currentPage === 'marketplace'
+                ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30'
                 : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
             }`}
           >
             <ShoppingBag className="w-4 h-4" />
-            <span className="hidden md:inline">Marketplace</span>
+            <span>Marketplace</span>
           </button>
           <button
             onClick={() => onNavigate('secondary')}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all text-sm font-medium ${
-              currentPage === 'secondary' 
-                ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30' 
+              currentPage === 'secondary'
+                ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30'
                 : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
             }`}
           >
             <Store className="w-4 h-4" />
-            <span className="hidden md:inline">Resale</span>
+            <span>Resale</span>
           </button>
           <button
             onClick={() => onNavigate('memberships')}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all text-sm font-medium ${
-              currentPage === 'memberships' 
-                ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30' 
+              currentPage === 'memberships'
+                ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30'
                 : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
             }`}
           >
             <Award className="w-4 h-4" />
-            <span className="hidden md:inline">My Memberships</span>
+            <span>My Memberships</span>
           </button>
           <button
             onClick={() => onNavigate('dashboard')}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all text-sm font-medium ${
-              currentPage === 'dashboard' 
-                ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30' 
+              currentPage === 'dashboard'
+                ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30'
                 : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
             }`}
           >
             <LayoutDashboard className="w-4 h-4" />
-            <span className="hidden md:inline">For Creators</span>
+            <span>For Creators</span>
           </button>
           <WalletConnect />
         </div>
+
+        {/* Mobile: Icon-only Navigation + Menu Button */}
+        <div className="md:hidden flex items-center gap-2">
+          <button
+            onClick={() => onNavigate('marketplace')}
+            className={`p-2 rounded-lg transition-all ${
+              currentPage === 'marketplace'
+                ? 'bg-blue-600 text-white'
+                : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
+            }`}
+          >
+            <ShoppingBag className="w-5 h-5" />
+          </button>
+          <button
+            onClick={() => onNavigate('secondary')}
+            className={`p-2 rounded-lg transition-all ${
+              currentPage === 'secondary'
+                ? 'bg-blue-600 text-white'
+                : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
+            }`}
+          >
+            <Store className="w-5 h-5" />
+          </button>
+          <button
+            onClick={() => onNavigate('memberships')}
+            className={`p-2 rounded-lg transition-all ${
+              currentPage === 'memberships'
+                ? 'bg-blue-600 text-white'
+                : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
+            }`}
+          >
+            <Award className="w-5 h-5" />
+          </button>
+          <button
+            onClick={() => onNavigate('dashboard')}
+            className={`p-2 rounded-lg transition-all ${
+              currentPage === 'dashboard'
+                ? 'bg-blue-600 text-white'
+                : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
+            }`}
+          >
+            <LayoutDashboard className="w-5 h-5" />
+          </button>
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 text-slate-600 hover:text-blue-600 transition-colors"
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      {mobileMenuOpen && (
+        <div className="md:hidden border-t border-blue-200 bg-white">
+          <div className="px-6 py-4">
+            <WalletConnect />
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
