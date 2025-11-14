@@ -65,7 +65,7 @@ export function WalletConnect() {
                   <div>
                     <h2 className="text-2xl font-bold mb-2 text-slate-900">Polkadot Wallet Required</h2>
                     <p className="text-slate-600 leading-relaxed">
-                      To use FairPass with real blockchain features, install a Polkadot wallet extension. Choose from Polkadot.js, SubWallet, or Talisman.
+                      To use FairPass with real blockchain features, install a Polkadot wallet extension. Choose from Polkadot Developer Signer, SubWallet, or Talisman.
                     </p>
                   </div>
                 </div>
@@ -79,8 +79,8 @@ export function WalletConnect() {
 
                         <div className="space-y-3">
                           <div className="border border-slate-200 rounded-lg p-3">
-                            <h4 className="font-semibold text-slate-900 mb-1">Polkadot.js</h4>
-                            <p className="text-xs text-slate-600 mb-2">Official Polkadot extension</p>
+                            <h4 className="font-semibold text-slate-900 mb-1">Polkadot Developer Signer</h4>
+                            <p className="text-xs text-slate-600 mb-2">Official Polkadot extension (formerly Polkadot.js)</p>
                             <div className="flex gap-2">
                               <a
                                 href="https://chrome.google.com/webstore/detail/polkadot%7Bjs%7D-extension/mopnmbcafieddcagagdcbnhejhlodfdd"

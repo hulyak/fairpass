@@ -111,7 +111,7 @@ npm run dev
 
 ### Prerequisites
 - **Node.js 18+** and npm
-- **Polkadot Wallet**: Polkadot.js extension or SubWallet
+- **Polkadot Wallet**: Polkadot Developer Signer (formerly Polkadot.js extension), SubWallet, or Talisman
 - Modern web browser (Chrome, Firefox, Brave)
 
 ### Quick Start (5 minutes)
@@ -138,13 +138,17 @@ No additional configuration needed for development.
 
 #### 4. Install Wallet Extension
 
-**Option A: Polkadot.js Extension (Recommended)**
+**Option A: Polkadot Developer Signer (Recommended)**
+- Formerly known as "Polkadot.js extension"
 - **Chrome**: https://chrome.google.com/webstore/detail/polkadot%7Bjs%7D-extension/mopnmbcafieddcagagdcbnhejhlodfdd
 - **Firefox**: https://addons.mozilla.org/en-US/firefox/addon/polkadot-js-extension/
 
 **Option B: SubWallet**
 - Download: https://subwallet.app/download.html
 - See [SUBWALLET_SETUP.md](./SUBWALLET_SETUP.md) for Westend Asset Hub configuration
+
+**Option C: Talisman**
+- Download: https://talisman.xyz/
 
 #### 5. Run Development Server
 ```bash

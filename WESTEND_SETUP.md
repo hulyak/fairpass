@@ -26,7 +26,7 @@ You need to **teleport** (cross-chain transfer) your WND from Relay Chain to Ass
 
 2. **Open Polkadot.js Apps**
    - Go to: https://polkadot.js.org/apps/?rpc=wss://westend-rpc.polkadot.io#/teleport
-   - Connect your Polkadot.js extension wallet
+   - Connect your wallet (Polkadot Developer Signer, SubWallet, or Talisman)
    - Select your account
 
 3. **Teleport to Asset Hub**

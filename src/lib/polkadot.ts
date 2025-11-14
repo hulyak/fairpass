@@ -14,7 +14,7 @@ const APP_NAME = 'FairPass';
 const WESTEND_ASSET_HUB_RPC = 'wss://westend-asset-hub-rpc.polkadot.io';
 
 export async function enablePolkadotExtension(): Promise<boolean> {
-  // Try to enable all available extensions (Polkadot.js, SubWallet, Talisman, etc.)
+  // Try to enable all available extensions (Polkadot Developer Signer, SubWallet, Talisman, etc.)
   const extensions = await web3Enable(APP_NAME);
 
   if (extensions.length > 0) {
@@ -22,7 +22,7 @@ export async function enablePolkadotExtension(): Promise<boolean> {
     return true;
   } else {
     console.error('❌ No wallet extensions found. Please install:');
-    console.log('- Polkadot.js: https://polkadot.js.org/extension/');
+    console.log('- Polkadot Developer Signer: https://polkadot.js.org/extension/');
     console.log('- SubWallet: https://subwallet.app/download.html');
     console.log('- Talisman: https://talisman.xyz/');
     return false;
@@ -32,7 +32,7 @@ export async function enablePolkadotExtension(): Promise<boolean> {
 export async function getPolkadotAccounts(): Promise<InjectedAccountWithMeta[]> {
   const enabled = await enablePolkadotExtension();
   if (!enabled) {
-    throw new Error('Polkadot extension not found. Please install Polkadot.js extension.');
+    throw new Error('Polkadot wallet not found. Please install Polkadot Developer Signer, SubWallet, or Talisman.');
   }
   const accounts = await web3Accounts();
   return accounts;
