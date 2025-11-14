@@ -5,6 +5,23 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FairPass Creator NFT Memberships</title>
+    <!-- Suppress MetaMask auto-injection errors (FairPass uses Polkadot wallets) -->
+    <script>
+      window.addEventListener('error', function(e) {
+        if (e.message && e.message.includes('MetaMask')) {
+          e.stopImmediatePropagation();
+          e.preventDefault();
+          return false;
+        }
+      });
+      window.addEventListener('unhandledrejection', function(e) {
+        if (e.reason && e.reason.toString().includes('MetaMask')) {
+          e.stopImmediatePropagation();
+          e.preventDefault();
+          return false;
+        }
+      });
+    </script>
   </head>
   <body>
     <div id="root"></div>

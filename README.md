@@ -475,6 +475,11 @@ The app can be deployed to any static hosting service:
 - Wrong network (must be Asset Hub, not Relay Chain)
 - Wallet approval cancelled
 
+### "MetaMask extension not found" error
+**Why this happens**: If you have MetaMask installed, it tries to auto-inject on all pages, even though FairPass uses Polkadot wallets.
+
+**Solution**: This error is harmless and suppressed automatically. FairPass only uses Polkadot wallets (Polkadot.js, SubWallet, Talisman), not MetaMask. You can safely ignore this or disable MetaMask extension while using FairPass.
+
 ### Other Issues
 - Check browser console (F12) for detailed error messages
 - Try demo mode to isolate if issue is blockchain-related
